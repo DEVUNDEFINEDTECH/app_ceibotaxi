@@ -1,4 +1,5 @@
 import 'package:app_taxis/src/screens/auth/auth_controller.dart';
+import 'package:app_taxis/src/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,26 +20,9 @@ class LoginScreen extends GetView<AuthController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image(
-                  image: const AssetImage('assets/images/logo_rtsg.png'),
+                  image: const AssetImage('assets/images/logo_sg.png'),
                   height: height * 0.2,
                   width: height * 0.6,
-                ),
-                const Center(
-                  child: Text(
-                    'RTSG',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 50,
-                        color: Colors.black,
-                        fontFamily: 'Roboto'),
-                  ),
-                ),
-                SizedBox(height: height * 0.03),
-                const Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(fontSize: 30),
-                  ),
                 ),
                 SizedBox(height: height * 0.03),
                 const Center(
@@ -129,7 +113,7 @@ class LoginScreen extends GetView<AuthController> {
                             'Iniciar Sesión',
                             style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.white,
+                                color: ColorsApp.green,
                                 fontWeight: FontWeight.bold),
                           ),
                   );

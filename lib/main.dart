@@ -18,11 +18,11 @@ class MyApp extends StatelessWidget {
       title: 'App_Taxis',
       defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: ColorsApp.green),
-        useMaterial3: true,
-      ),
-      //theme: lightTheme,
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: ColorsApp.green),
+      //   useMaterial3: true,
+      // ),
+      theme: lightTheme,
       initialBinding: MainBinding(),
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

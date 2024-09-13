@@ -8,7 +8,6 @@ import 'package:get_storage/get_storage.dart';
 class GlobalMemory {
   RxList bases = [].obs;
   RxList<Carrera> carreras = <Carrera>[].obs;
-  SocketsService socketService = SocketsService();
   RxBool ifCarrera = false.obs;
   RxList<Carrera> carreraActiva = <Carrera>[].obs;
 
@@ -52,10 +51,6 @@ class GlobalMemory {
     return token;
   }
 
-  final totalProducts = 0.obs;
-  final totalCustomer = 0.obs;
-  final totalIncome = 0.0.obs;
-  final timeSelected = '1M'.obs;
   Map<String, int> rango = {
     "1M": 1,
     "3M": 3,
@@ -63,5 +58,3 @@ class GlobalMemory {
     "1A": 12,
   };
 }
-
-class SocketsService {}

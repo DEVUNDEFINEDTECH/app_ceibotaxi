@@ -20,11 +20,16 @@ class LoginScreen extends GetView<AuthController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image(
-                  image: const AssetImage('assets/images/logo_sg.png'),
-                  height: height * 0.2,
-                  width: height * 0.6,
+                  image: const AssetImage('assets/images/logo.png'),
+                  height: height * 0.15,
+                  width: width * 0.4,
                 ),
-                SizedBox(height: height * 0.03),
+                Image(
+                  image: const AssetImage('assets/images/nombre.png'),
+                  height: height * 0.15,
+                  width: width * 0.2,
+                ),
+                SizedBox(height: height * 0.015),
                 const Center(
                   child: Text(
                     "Inicia Sesión con tu correo electrónico",
@@ -119,11 +124,11 @@ class LoginScreen extends GetView<AuthController> {
                   );
                 }),
                 const SizedBox(height: 16),
-                const Align(
+                Align(
                   alignment: Alignment.center,
                   child: Text(
-                    "Desarrollado por UndefinedTech",
-                    style: TextStyle(
+                    "Desarrollado por CeiboCode. All rights Reserved ${DateTime.now().year} ",
+                    style: const TextStyle(
                       fontSize: 12,
                       color: Colors.grey,
                     ),

@@ -8,6 +8,8 @@ class SplashScreen extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(30),
@@ -19,10 +21,9 @@ class SplashScreen extends GetView<SplashController> {
               height: 70,
             ),
             Image.asset(
-              'assets/images/logo_rtsg.png',
-            ),
-            Image.asset(
-              'assets/images/slogan_rtsg.png',
+              height: height * 0.2,
+              width: width * 0.6,
+              'assets/images/logo.png',
             ),
             const SizedBox(
               height: 50,

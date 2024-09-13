@@ -75,7 +75,7 @@ class SplashController extends GetxController {
         print(e);
         //showSnabarError(textError);
       }
-      Get.offAndToNamed(Routes.DASHBOARD);
+      Get.offAndToNamed(Routes.DASHBOARDDRIVER);
     } else {
       Get.offAndToNamed(Routes.LOGIN);
       GlobalMemory.to.user = user;

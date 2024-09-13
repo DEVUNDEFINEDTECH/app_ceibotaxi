@@ -11,7 +11,6 @@ class AuthController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isActive = true.obs;
   GlobalMemory gm = Get.find<GlobalMemory>();
-  SocketsService socketService = SocketsService();
   //NotificationService notificationService = NotificationService();
 
   final TextEditingController userNameController = TextEditingController();

@@ -4,6 +4,8 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
 
+  static const DASHBOARDCUSTOMER = _Paths.DASHBOARDCUSTOMER;
+  static const DASHBOARDDRIVER = _Paths.DASHBOARDDRIVER;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const LOGIN = _Paths.LOGIN;
   static const HOME = _Paths.HOME;
@@ -19,6 +21,8 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const DASHBOARDCUSTOMER = '/dashboardCustomer';
+  static const DASHBOARDDRIVER = '/dashboardDriver';
   static const DASHBOARD = '/dashboard';
   static const LOGIN = '/login';
   static const HOME = '/home';

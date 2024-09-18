@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 
-class cardCarrer extends StatelessWidget {
-  const cardCarrer({
+class CardCarrer extends StatelessWidget {
+  const CardCarrer({
     super.key,
     required this.direccion,
     required this.fecha,
@@ -152,103 +152,6 @@ class cardCarrer extends StatelessWidget {
                           ubicacion_exacta: ubicacion_exacta,
                           observacion: observacion ?? "Sin Observacion",
                         ));
-
-                        //Get.toNamed(Routes.CARRERA_DETAIL);
-                        // showBottomSheet(
-                        //     elevation: 1,
-                        //     context: context,
-                        //     shape: const RoundedRectangleBorder(
-                        //       borderRadius: BorderRadius.vertical(
-                        //         top: Radius.circular(25.0),
-                        //       ),
-                        //     ),
-                        //     builder: (BuildContext context) {
-                        //       return Stack(
-                        //         children: [
-                        //           MapScreen(),
-                        //           Container(
-                        //             margin: const EdgeInsets.symmetric(
-                        //                 horizontal: 10, vertical: 10),
-                        //             padding: const EdgeInsets.all(20),
-                        //             height: height,
-                        //             width: width,
-                        //             decoration: BoxDecoration(
-                        //                 color: Colors.white.withOpacity(0.5),
-                        //                 borderRadius:
-                        //                     const BorderRadius.vertical(
-                        //                         top: Radius.circular(30),
-                        //                         bottom: Radius.circular(30)),
-                        //                 boxShadow: const [
-                        //                   BoxShadow(
-                        //                     color: Color(0x26000000),
-                        //                     blurRadius: 30,
-                        //                     offset: Offset(0, 0),
-                        //                     spreadRadius: 0,
-                        //                   )
-                        //                 ]),
-                        //             child: SingleChildScrollView(
-                        //               child: Column(
-                        //                 crossAxisAlignment:
-                        //                     CrossAxisAlignment.start,
-                        //                 mainAxisAlignment:
-                        //                     MainAxisAlignment.spaceBetween,
-                        //                 children: [
-                        //                   Text(
-                        //                     cod_cliente,
-                        //                     style: const TextStyle(
-                        //                         fontSize: 20,
-                        //                         fontWeight: FontWeight.bold),
-                        //                   ),
-                        //                   Text(cliente,
-                        //                       style: const TextStyle(
-                        //                         fontSize: 15,
-                        //                       )),
-                        //                   Row(
-                        //                     children: [
-                        //                       Icon(
-                        //                         Icons
-                        //                             .radio_button_checked_outlined,
-                        //                         color: ColorsApp.lightGreen,
-                        //                         size: height * 0.1,
-                        //                       ),
-                        //                       Expanded(
-                        //                         child: Text(
-                        //                           direccion,
-                        //                           overflow:
-                        //                               TextOverflow.ellipsis,
-                        //                           maxLines: 1,
-                        //                         ),
-                        //                       ),
-                        //                     ],
-                        //                   ),
-                        //                   observacion != null
-                        //                       ? Text(
-                        //                           "Observacion: $observacion")
-                        //                       : const Text("Sin Observacion"),
-                        //                   const Text(
-                        //                     "Ubicación Exacta: ",
-                        //                     style: TextStyle(fontSize: 18),
-                        //                   ),
-                        //                   const Divider(
-                        //                     height: 5,
-                        //                     thickness: 2,
-                        //                     indent: 0,
-                        //                     endIndent: 0,
-                        //                     color: Colors.black,
-                        //                   ),
-                        //                   Text(
-                        //                     ubicacion_exacta,
-                        //                     style: const TextStyle(
-                        //                         fontSize: 15,
-                        //                         color: Colors.black),
-                        //                   ),
-                        //                 ],
-                        //               ),
-                        //             ),
-                        //           )
-                        //         ],
-                        //       );
-                        //     });
                       },
                       child: const Text(
                         "Detalle Carrera",

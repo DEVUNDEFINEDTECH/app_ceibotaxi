@@ -21,14 +21,9 @@ class AuthenticationService {
               'Accept': 'application/json',
             },
           ));
-      // if (!response.data.estado) {
-      //   print("Debug estado falso");
-      //   throw Exception("Error en las credenciales");
-      // }
-
       LoginResponse loginResponse = LoginResponse.fromJson(response.data);
       return loginResponse;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (e.response!.statusCode == 500) {
         LoginResponseError response =
             LoginResponseError.fromJson(e.response!.data);

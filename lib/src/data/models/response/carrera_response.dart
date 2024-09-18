@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 
 class CarrerasResponse {
@@ -13,11 +11,6 @@ class CarrerasResponse {
     this.datos,
   });
   factory CarrerasResponse.fromJson(Map<String, dynamic> json) {
-    print("esta es la data que viene");
-    print(json["datos"]);
-    if (json["datos"] == []) {
-      print("Validacion Correcta");
-    }
     return CarrerasResponse(
       estado: json["estado"],
       observacion: json["observacion"],

@@ -24,7 +24,7 @@ class BasesService {
       print(response);
       BasesResponse baseResponse = BasesResponse.fromJson(response.data);
       return baseResponse.datos;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       print('Error $e');
       // if (e.response!.statusCode == 500) {
       //   CarreraResponseError response =

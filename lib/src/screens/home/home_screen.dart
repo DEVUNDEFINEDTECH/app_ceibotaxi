@@ -117,7 +117,6 @@ class HomeScreen extends GetView<HomeController> {
               height: height * 0.015,
             ),
             const Divider(),
-
             Expanded(
               child: RefreshIndicator(
                 onRefresh: carrers_controller.refreshData,
@@ -129,7 +128,7 @@ class HomeScreen extends GetView<HomeController> {
                           itemBuilder: (context, index) {
                             final carrera =
                                 carrers_controller.gm.carreraActiva[index];
-                            return cardCarrer(
+                            return CardCarrer(
                                 observacion: carrera.observacion,
                                 ubicacion_exacta:
                                     carrera.ubicacionexactacliente ??

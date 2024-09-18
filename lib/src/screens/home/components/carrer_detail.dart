@@ -56,81 +56,72 @@ class CarrerDetailPage extends StatelessWidget {
                   ))
                 ],
               ),
-              Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                padding: const EdgeInsets.all(20),
-                height: height * 0.3,
-                width: width,
-                decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
-                    borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(30), bottom: Radius.circular(30)),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color(0x26000000),
-                        blurRadius: 30,
-                        offset: Offset(0, 0),
-                        spreadRadius: 0,
-                      )
-                    ]),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        cod_cliente,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Text(cliente,
-                          style: const TextStyle(
-                            fontSize: 15,
-                          )),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.radio_button_checked_outlined,
-                            color: ColorsApp.lightGreen,
-                            size: height * 0.05,
-                          ),
-                          Expanded(
-                            child: Text(
-                              direccion,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                      observacion != null
-                          ? Text("Observacion: $observacion")
-                          : const Text("Sin Observacion"),
-                      const Text(
-                        "Ubicación Exacta: ",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      const Divider(
-                        height: 5,
-                        thickness: 2,
-                        indent: 0,
-                        endIndent: 0,
-                        color: Colors.black,
-                      ),
-                      Text(
-                        ubicacion_exacta,
-                        style:
-                            const TextStyle(fontSize: 15, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              Expanded(child: SizedBox()),
+              card_detail(height, width),
             ],
           )
         ],
       ),
     ));
+  }
+
+  Container card_detail(double height, double width) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.all(20),
+      height: height * 0.2,
+      width: width,
+      decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.5),
+          borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(30), bottom: Radius.circular(30)),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x26000000),
+              blurRadius: 30,
+              offset: Offset(0, 0),
+              spreadRadius: 0,
+            )
+          ]),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(cliente,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Row(
+              children: [
+                Icon(
+                  Icons.radio_button_checked_outlined,
+                  color: ColorsApp.lightGreen,
+                  size: height * 0.03,
+                ),
+                Expanded(
+                  child: Text(
+                    direccion,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              "Coordenadas: $ubicacion_exacta",
+              style: const TextStyle(fontSize: 15, color: Colors.black),
+            ),
+            const Divider(
+              height: 5,
+              thickness: 2,
+              indent: 0,
+              endIndent: 0,
+              color: Colors.black,
+            ),
+            Text("Observacion: $observacion")
+          ],
+        ),
+      ),
+    );
   }
 }

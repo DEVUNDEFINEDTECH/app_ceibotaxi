@@ -1,4 +1,4 @@
-import 'package:app_taxis/src/data/providers/socket_provider.dart';
+import 'package:app_taxis/src/data/services/socket_servicer.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/screens/carrers/carrers_controller.dart';
 import 'package:get/get.dart';

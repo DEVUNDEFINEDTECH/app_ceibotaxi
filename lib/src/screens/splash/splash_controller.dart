@@ -2,9 +2,9 @@ import 'package:app_taxis/src/data/models/base_model.dart';
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/data/models/unidad_model.dart';
 import 'package:app_taxis/src/data/models/user_model.dart';
-import 'package:app_taxis/src/data/providers/base_provider.dart';
-import 'package:app_taxis/src/data/providers/carrers_providers.dart';
-import 'package:app_taxis/src/data/providers/local_storage_provider.dart';
+import 'package:app_taxis/src/data/services/base_service.dart';
+import 'package:app_taxis/src/data/services/carrers_service.dart';
+import 'package:app_taxis/src/data/services/local_storage_service.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
 import 'package:get/get.dart';
@@ -23,7 +23,7 @@ class SplashController extends GetxController {
     await fechData();
   }
 
-  GlobalMemory gm = Get.find<GlobalMemory>();
+  //GlobalMemory gm = Get.find<GlobalMemory>();
 
   // void validateSession() async {
   //   try {
@@ -63,7 +63,7 @@ class SplashController extends GetxController {
         ? await GlobalMemory.to.box.read('unity')
         : null;
     if (user != null || unity != null) {
-      if (gm.user == null || gm.unity == null) {
+      if (GlobalMemory.to.user == null || GlobalMemory.to.unity == null) {
         GlobalMemory.to.user = User.fromJson(user);
         GlobalMemory.to.unity = Unidad.fromJson(unity);
       }
@@ -86,15 +86,15 @@ class SplashController extends GetxController {
   Future<void> getBases() async {
     List<Base>? basesList = await BasesService.getBases();
     if (basesList != null) {
-      gm.bases.value = basesList;
+      GlobalMemory.to.bases.value = basesList;
     }
   }
 
   Future<void> getCarrers() async {
     List<Carrera>? carrersList =
-        await CarrersService.getCarrers(gm.getUnity()!.id);
+        await CarrersService.getCarrers(GlobalMemory.to.getUnity()!.id);
     if (carrersList != null) {
-      gm.carreras.value = carrersList;
+      GlobalMemory.to.carreras.value = carrersList;
     }
   }
 
@@ -126,7 +126,4 @@ class SplashController extends GetxController {
       // Puedes mostrar un mensaje al usuario informándole que necesita otorgar permisos
     }
   }
-
-  @override
-  void onClose() {}
 }

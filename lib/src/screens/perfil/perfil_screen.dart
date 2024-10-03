@@ -75,8 +75,8 @@ class PerfilScreen extends GetView<PerfilController> {
                             onChanged: (bool value) {
                               if (value) {
                                 socketService.connectSocket();
-                                notificationService.showNotification(
-                                    '10-8', 'Bienvenido al martillo');
+                                //notificationService.showNotification(
+                                //  '10-8', 'Bienvenido al martillo');
                               } else {
                                 socketService.disconnectSocket();
                               }

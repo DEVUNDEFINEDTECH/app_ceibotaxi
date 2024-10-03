@@ -4,9 +4,11 @@ import 'package:app_taxis/src/screens/splash/splash_binding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:app_taxis/src/global_memory.dart';
 
 Future<void> main() async {
   await GetStorage.init();
+  Get.put(GlobalMemory());
   runApp(const MyApp());
 }
 

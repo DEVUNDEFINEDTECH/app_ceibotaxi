@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:app_taxis/src/data/models/route_model.dart';
+import 'package:app_taxis/src/data/providers/routes_provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -8,6 +10,8 @@ class MyMapController extends GetxController {
   //final location = Location();
   Rx<LatLng> userLocation = LatLng(0.0, 0.0).obs;
   late final List<LatLng> historyLocation;
+  RoutesProvider _routesProvider = RoutesProvider();
+  List<LatLng> route = <LatLng>[];
 
   @override
   void onInit() {
@@ -22,6 +26,14 @@ class MyMapController extends GetxController {
     userLocation.value = LatLng(position.latitude, position.longitude);
 
     print('Posicion $position');
+  }
+
+  Future getRoute(startLocation) async {
+    if (startLocation != null) {
+      Route routeTemp =
+          await _routesProvider.getRoute(userLocation.value, startLocation!);
+      route = routeTemp.coordinates;
+    }
   }
 
   void startFollowingUnity() async {

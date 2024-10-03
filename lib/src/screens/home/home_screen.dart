@@ -3,6 +3,7 @@ import 'package:app_taxis/src/routes/app_pages.dart';
 import 'package:app_taxis/src/screens/carrers/carrers_controller.dart';
 import 'package:app_taxis/src/screens/dashboard/driver/dashboard_controller.dart';
 import 'package:app_taxis/src/screens/home/components/card_carrera.dart';
+import 'package:app_taxis/src/screens/home/components/carrer_detail.dart';
 import 'package:app_taxis/src/screens/home/home_controller.dart';
 import 'package:app_taxis/src/theme.dart';
 import 'package:flutter/material.dart';
@@ -79,15 +80,18 @@ class HomeScreen extends GetView<HomeController> {
                     onTap: () => dc.tabIndex.value = 1,
                     child: _card(
                         "Total de Carreras",
-                        gm.carreras.length.toString(),
+                        GlobalMemory.to.carreras.length.toString(),
                         height * 0.15,
                         width * 0.4)),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.BASESDETAIL);
                   },
-                  child: _card("Total de bases", gm.bases.length.toString(),
-                      height * 0.15, width * 0.4),
+                  child: _card(
+                      "Total de bases",
+                      GlobalMemory.to.bases.length.toString(),
+                      height * 0.15,
+                      width * 0.4),
                 ),
               ],
             ),
@@ -129,24 +133,16 @@ class HomeScreen extends GetView<HomeController> {
                             final carrera =
                                 carrers_controller.gm.carreraActiva[index];
                             return CardCarrer(
-                                observacion: carrera.observacion,
-                                ubicacion_exacta:
-                                    carrera.ubicacionexactacliente ??
-                                        carrera.direccionpartida ??
-                                        "",
-                                direccion: carrera.codigocliente != null
-                                    ? carrera.direccion
-                                    : carrera.direccionpartida ??
-                                        "Sin Dirección",
-                                fecha: carrera.fecharegistro!.toLocal(),
-                                width: width,
-                                height: height * 0.27,
-                                cliente: carrera.codigocliente != null
-                                    ? "${carrera.name} ${carrera.apellidopaterno} ${carrera.apellidomaterno}"
-                                    : carrera.nombrecliente ?? "",
-                                cod_cliente: carrera.codigocliente != null
-                                    ? "Cliente ${carrera.codigocliente.toString()}"
-                                    : "No Cliente");
+                              carrer: carrera,
+                              width: width,
+                              height: height * 0.27,
+                              detalle: () {
+                                Get.to(CarrerDetailPage(
+                                  carrer: carrera,
+                                ));
+                              },
+                              finalizar: () {},
+                            );
                           },
                         )
                       : Column(

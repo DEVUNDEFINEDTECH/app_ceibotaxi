@@ -10,7 +10,7 @@ import 'package:app_taxis/src/routes/app_pages.dart';
 class AuthController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isActive = true.obs;
-  GlobalMemory gm = Get.find<GlobalMemory>();
+  //GlobalMemory gm = Get.find<GlobalMemory>();
   //NotificationService notificationService = NotificationService();
 
   final TextEditingController userNameController = TextEditingController();
@@ -25,7 +25,8 @@ class AuthController extends GetxController {
     isLoading.value = true;
     validate().then((value) {
       if (value) {
-        Get.snackbar("Bienvenido", gm.user!.nombresUsuario.split(' ')[2],
+        Get.snackbar(
+            "Bienvenido", GlobalMemory.to.user!.nombresUsuario.split(' ')[2],
             snackPosition: SnackPosition.BOTTOM,
             //backgroundColor: ColorsApp.lightGreen.withOpacity(0.7),
             colorText: Colors.white,
@@ -77,11 +78,12 @@ class AuthController extends GetxController {
             return false;
           }
           print("Dentro de la validacion del rol");
-          await gm.box.write("token", loginResponse.token);
-          await gm.box.write("user", loginResponse.datos);
-          await gm.box.write("unity", loginResponse.datos!.unidad![0]);
-          gm.user = loginResponse.datos;
-          gm.unity = loginResponse.datos!.unidad![0];
+          await GlobalMemory.to.box.write("token", loginResponse.token);
+          await GlobalMemory.to.box.write("user", loginResponse.datos);
+          await GlobalMemory.to.box
+              .write("unity", loginResponse.datos!.unidad![0]);
+          GlobalMemory.to.user = loginResponse.datos;
+          GlobalMemory.to.unity = loginResponse.datos!.unidad![0];
           return true;
         } else {
           error.value =
@@ -99,7 +101,7 @@ class AuthController extends GetxController {
   }
 
   logout() async {
-    gm.box.erase();
+    GlobalMemory.to.box.erase();
     //socketService.disconnectSocket();
     Get.offAndToNamed(Routes.LOGIN);
   }

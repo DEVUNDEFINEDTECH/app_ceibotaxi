@@ -1,32 +1,23 @@
 import 'dart:ui';
-
-import 'package:app_taxis/src/screens/home/components/carrer_detail.dart';
+import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 
 class CardCarrer extends StatelessWidget {
   const CardCarrer({
     super.key,
-    required this.direccion,
-    required this.fecha,
+    required this.carrer,
     required this.width,
     required this.height,
-    required this.cliente,
-    required this.cod_cliente,
-    required this.ubicacion_exacta,
-    this.observacion = "Sin Observación",
+    required this.finalizar,
+    required this.detalle,
   });
-  final String? observacion;
+  final Carrera carrer;
+  final VoidCallback finalizar;
+  final VoidCallback detalle;
   final double width;
   final double height;
-  final DateTime fecha;
-  final String cliente;
-  final String direccion;
-  final String cod_cliente;
-  final String ubicacion_exacta;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +46,13 @@ class CardCarrer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        cliente,
+                        "${carrer.name}${carrer.apellidopaterno}${carrer.apellidomaterno}",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        cod_cliente,
+                        carrer.codigocliente != null
+                            ? carrer.codigocliente.toString()
+                            : "Nocliente",
                         style: const TextStyle(color: Colors.grey),
                       )
                     ],
@@ -70,10 +63,14 @@ class CardCarrer extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: Text(
-                DateFormat('M/d/y').format(fecha) ==
+                DateFormat('M/d/y').format(
+                          carrer.fecharegistro!.toLocal(),
+                        ) ==
                         DateFormat('M/d/y').format(DateTime.now())
                     ? "Hoy"
-                    : DateFormat('M/d/y').format(fecha),
+                    : DateFormat('M/d/y').format(
+                        carrer.fecharegistro!.toLocal(),
+                      ),
                 style: const TextStyle(color: Colors.grey, fontSize: 12),
               ),
             ),
@@ -87,10 +84,14 @@ class CardCarrer extends StatelessWidget {
                 ),
                 Container(
                     margin: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(DateFormat('HH:mm a').format(fecha))),
+                    child: Text(DateFormat('HH:mm a').format(
+                      carrer.fecharegistro!.toLocal(),
+                    ))),
                 Expanded(
                   child: TextFormField(
-                    initialValue: direccion,
+                    initialValue: carrer.codigocliente != null
+                        ? carrer.direccion
+                        : carrer.direccionpartida ?? "Sin Dirección",
                     readOnly: true,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -130,9 +131,9 @@ class CardCarrer extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: finalizar,
                     child: const Text(
-                      "Declinar",
+                      "Finalizar",
                       style: TextStyle(color: ColorsApp.red),
                     )),
                 SizedBox(width: width * 0.03),
@@ -144,15 +145,7 @@ class CardCarrer extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
-                      onPressed: () {
-                        Get.to(CarrerDetailPage(
-                          direccion: direccion,
-                          cliente: cliente,
-                          cod_cliente: cod_cliente,
-                          ubicacion_exacta: ubicacion_exacta,
-                          observacion: observacion ?? "Sin Observacion",
-                        ));
-                      },
+                      onPressed: detalle,
                       child: const Text(
                         "Detalle Carrera",
                         style: TextStyle(

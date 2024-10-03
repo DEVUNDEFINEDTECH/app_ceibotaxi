@@ -1,21 +1,15 @@
+import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/screens/map/map_screen.dart';
 import 'package:app_taxis/src/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CarrerDetailPage extends StatelessWidget {
-  final String direccion;
-  final String cliente;
-  final String cod_cliente;
-  final String ubicacion_exacta;
-  final String observacion;
+  final Carrera carrer;
 
   CarrerDetailPage({
-    required this.direccion,
-    required this.cliente,
-    required this.cod_cliente,
-    required this.ubicacion_exacta,
-    required this.observacion,
+    required this.carrer,
   });
 
   @override
@@ -27,7 +21,11 @@ class CarrerDetailPage extends StatelessWidget {
         body: SafeArea(
       child: Stack(
         children: [
-          MapScreen(),
+          MapScreen(
+              startLocation: carrer.coordenadasPersona != null
+                  ? LatLng(carrer.coordenadasPersona!.lat,
+                      carrer.coordenadasPersona!.lng)
+                  : null),
           Column(
             children: [
               Row(
@@ -88,7 +86,7 @@ class CarrerDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(cliente,
+            Text(carrer.name,
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Row(
@@ -100,7 +98,7 @@ class CarrerDetailPage extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    direccion,
+                    carrer.direccion,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -108,7 +106,7 @@ class CarrerDetailPage extends StatelessWidget {
               ],
             ),
             Text(
-              "Coordenadas: $ubicacion_exacta",
+              "Coordenadas: ${carrer.ubicacionexactacliente}",
               style: const TextStyle(fontSize: 15, color: Colors.black),
             ),
             const Divider(
@@ -118,7 +116,8 @@ class CarrerDetailPage extends StatelessWidget {
               endIndent: 0,
               color: Colors.black,
             ),
-            Text("Observacion: $observacion")
+            if (carrer.observacion != null)
+              Text("Observacion: ${carrer.observacion}")
           ],
         ),
       ),

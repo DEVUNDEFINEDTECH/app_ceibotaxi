@@ -2,9 +2,9 @@ import 'package:app_taxis/src/data/models/base_model.dart';
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/data/models/unidad_model.dart';
 import 'package:app_taxis/src/data/models/user_model.dart';
-import 'package:app_taxis/src/data/providers/base_provider.dart';
-import 'package:app_taxis/src/data/providers/carrers_providers.dart';
-import 'package:app_taxis/src/data/providers/local_storage_provider.dart';
+import 'package:app_taxis/src/data/services/base_service.dart';
+import 'package:app_taxis/src/data/services/carrers_service.dart';
+import 'package:app_taxis/src/data/services/local_storage_service.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
 
@@ -21,6 +21,37 @@ class SplashController extends GetxController {
     await checkAndRequestPermissions();
     await fechData();
   }
+
+  //GlobalMemory gm = Get.find<GlobalMemory>();
+
+  // void validateSession() async {
+  //   try {
+  //     final token = await localStorage.getToken();
+  //     print('token $token');
+  //     if (token != null) {
+  //       final user =
+  //           await autenticationRepositoryInterface.getUserByToken(token);
+  //       print('El user loggeado es: ${user?.username}');
+
+  //       //final cities= await local
+
+  //       if (user != null) {
+  //         GlobalState.to.setUser(user);
+  //         GlobalState.to.setAssignmentManager(user.assignmentmanager![0]);
+  //         Get.toNamed(SgasRoutes.dashboard);
+  //       }
+  //       //Get.toNamed(SgasRoutes.login);
+  //     } else {
+  //       Get.toNamed(SgasRoutes.login);
+  //     }
+  //   } catch (e) {
+  //     print('error fuera: $e');
+  //     error.value = e.toString().replaceAll('Exception: ', '');
+  //     Get.toNamed(SgasRoutes.login);
+  //     Get.snackbar('Error', 'Error de Autenticación: ${error.value}',
+  //         backgroundColor: Colors.red[200]);
+  //   }
+  // }
 
   Future<void> fechData() async {
     final user = GlobalMemory.to.box.hasData('user')

@@ -1,4 +1,5 @@
-import 'package:app_taxis/src/data/providers/socket_provider.dart';
+import 'package:app_taxis/src/data/services/socket_servicer.dart';
+import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
 import 'package:app_taxis/src/screens/home/components/total_card.dart';
 import 'package:app_taxis/src/screens/perfil/perfil_controller.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class PerfilScreen extends GetView<PerfilController> {
   List<String> listGenderText = ["10-8", "10-7"];
   RxBool tabTextIconIndexSelected = true.obs;
@@ -127,10 +129,10 @@ class PerfilScreen extends GetView<PerfilController> {
                               ),
                               Text(
                                   overflow: TextOverflow.ellipsis,
-                                  controller.gm.user!.usuario,
+                                  GlobalMemory.to.user!.usuario,
                                   style: const TextStyle(
                                       color: Colors.grey, fontSize: 14)),
-                              Text(controller.gm.user!.cedula.toString(),
+                              Text(GlobalMemory.to.user!.cedula.toString(),
                                   style: const TextStyle(
                                       fontSize: 14, color: Colors.grey)),
                               Row(
@@ -140,7 +142,7 @@ class PerfilScreen extends GetView<PerfilController> {
                                     size: 16,
                                   ),
                                   Text(
-                                      controller.gm.user!.celular ??
+                                      GlobalMemory.to.user!.celular ??
                                           "Sin Celular",
                                       style: const TextStyle(
                                           color: Colors.grey, fontSize: 14)),
@@ -226,18 +228,18 @@ class PerfilScreen extends GetView<PerfilController> {
                                 children: [
                                   Text(
                                     overflow: TextOverflow.ellipsis,
-                                    'Disco # ${controller.gm.unity!.numerounidad.toString()}',
+                                    'Disco # ${GlobalMemory.to.unity!.numerounidad.toString()}',
                                     style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     overflow: TextOverflow.ellipsis,
-                                    '${controller.gm.unity!.marca} ${controller.gm.unity!.modelo} - ${controller.gm.unity!.anovehiculo}',
+                                    '${GlobalMemory.to.unity!.marca} ${GlobalMemory.to.unity!.modelo} - ${GlobalMemory.to.unity!.anovehiculo}',
                                     style: const TextStyle(
                                         color: Colors.grey, fontSize: 14),
                                   ),
-                                  Text(controller.gm.unity!.placa,
+                                  Text(GlobalMemory.to.unity!.placa,
                                       style: const TextStyle(
                                           color: Colors.grey, fontSize: 14)),
                                 ],
@@ -282,7 +284,7 @@ class PerfilScreen extends GetView<PerfilController> {
                 width: width,
                 child: TextButton(
                   onPressed: () {
-                    controller.gm.logout();
+                    GlobalMemory.to.logout();
                   },
                   child: const Row(
                     children: [

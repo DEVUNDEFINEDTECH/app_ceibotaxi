@@ -1,5 +1,5 @@
 import 'package:app_taxis/src/data/models/carrera_model.dart';
-import 'package:app_taxis/src/data/providers/carrers_providers.dart';
+import 'package:app_taxis/src/data/services/carrers_service.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

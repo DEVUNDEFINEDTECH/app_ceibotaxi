@@ -1,4 +1,3 @@
-import 'package:app_taxis/src/screens/auth/auth_controller.dart';
 import 'package:app_taxis/src/screens/carrers/carrers_controller.dart';
 import 'package:app_taxis/src/screens/carrers/components/card_carrera_resumen.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class CarrersScreen extends GetView<CarrersController> {
-  AuthController authController = AuthController();
   CarrersScreen({super.key});
 
   @override

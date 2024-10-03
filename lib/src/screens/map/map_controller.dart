@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:app_taxis/src/data/models/route_model.dart';
-import 'package:app_taxis/src/data/providers/routes_provider.dart';
+import 'package:app_taxis/src/data/services/routes_servicedart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

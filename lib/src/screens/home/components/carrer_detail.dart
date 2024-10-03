@@ -16,16 +16,24 @@ class CarrerDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    LatLng? startLocation;
+
+    if (carrer.coordenadasPersona != null &&
+        carrer.coordenadasPersona!.lat != null &&
+        carrer.coordenadasPersona!.lng != null) {
+      startLocation = LatLng(
+        carrer.coordenadasPersona!.lat!,
+        carrer.coordenadasPersona!.lng!,
+      );
+    } else {
+      startLocation = null;
+    }
 
     return Scaffold(
         body: SafeArea(
       child: Stack(
         children: [
-          MapScreen(
-              startLocation: carrer.coordenadasPersona != null
-                  ? LatLng(carrer.coordenadasPersona!.lat,
-                      carrer.coordenadasPersona!.lng)
-                  : null),
+          MapScreen(startLocation: startLocation),
           Column(
             children: [
               Row(
@@ -86,7 +94,8 @@ class CarrerDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(carrer.name,
+            Text(
+                "${carrer.name} ${carrer.apellidopaterno} ${carrer.apellidomaterno}",
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Row(
@@ -98,7 +107,7 @@ class CarrerDetailPage extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    carrer.direccion,
+                    carrer.direccion ?? "",
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),

@@ -50,8 +50,6 @@ class CarrersService {
         '/carreras/mostrar.carreras',
         queryParameters: {'unidadid': idUnidad},
       );
-      print(response.data);
-
       CarrerasResponse carreraResponse =
           CarrerasResponse.fromJson(response.data);
       return carreraResponse.datos;

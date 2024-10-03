@@ -1,12 +1,12 @@
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 
 class CarrerasResponse {
-  bool? estado;
-  dynamic observacion;
+  bool estado;
+  String? observacion;
   List<Carrera>? datos;
 
   CarrerasResponse({
-    this.estado,
+    required this.estado,
     this.observacion,
     this.datos,
   });

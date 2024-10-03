@@ -39,11 +39,11 @@ class SocketsService extends GetxController {
         _socket.on('id', (data) {
           if (data != null) {
             gm.addCarrera(Carrera.fromJson(data));
-            notificationService.showNotification(
-                gm.carreraActiva[0].clienteid != null
-                    ? "Nueva Carrera Asignada ${gm.carreraActiva[0].name} ${gm.carreraActiva[0].apellidopaterno} ${gm.carreraActiva[0].apellidomaterno}"
-                    : "",
-                gm.carreraActiva[0].direccion);
+            // notificationService.showNotification(
+            //     gm.carreraActiva[0].clienteid != null
+            //         ? "Nueva Carrera Asignada ${gm.carreraActiva[0].name} ${gm.carreraActiva[0].apellidopaterno} ${gm.carreraActiva[0].apellidomaterno}"
+            //         : "",
+            //     gm.carreraActiva[0].direccion ?? "");
             // showBottomSheet(
             //     context: Get.context!,
             //     builder: (context) {
@@ -78,7 +78,7 @@ class SocketsService extends GetxController {
         print("Disconetceddd");
       });
       print('_Socket desconectado');
-      notificationService.showNotification('10-7', 'Tks por el martillo');
+      //notificationService.showNotification('10-7', 'Tks por el martillo');
     }
     _statusServer.value = ServerStatus.OffLine;
     _socket.dispose();

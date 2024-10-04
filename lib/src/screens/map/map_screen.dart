@@ -14,7 +14,8 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   MyMapController myMapController = MyMapController();
-  BitmapDescriptor? customIcon;
+  BitmapDescriptor? customIconStart;
+  BitmapDescriptor? customIconEnd;
   Set<Polyline> polylines = {};
 
   @override
@@ -36,10 +37,23 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _loadCustomMarker() async {
-    final icon = await BitmapDescriptor.asset(
+    final iconStart = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(35, 35)), // Tamaño de la imagen
       'assets/images/logo_rtsg.png', // Ruta a tu imagen
     );
+    final iconEnd = await BitmapDescriptor.asset(
+      const ImageConfiguration(size: Size(35, 35)), // Tamaño de la imagen
+      'assets/images/icon_home.png', // Ruta a tu imagen
+    );
+
+    print("STRAT Location : ${widget.startLocation}");
+    print("End Location : ${widget.endLocation}");
+
+    if (widget.startLocation != null) {
+      setState(() {
+        customIconEnd = iconEnd;
+      });
+    }
 
     if (myMapController.route.isNotEmpty) {
       Polyline polyline = Polyline(
@@ -52,12 +66,12 @@ class _MapScreenState extends State<MapScreen> {
       print("ruta:${myMapController.route}");
 
       setState(() {
-        customIcon = icon;
+        customIconStart = iconStart;
         polylines.add(polyline);
       });
     } else {
       setState(() {
-        customIcon = icon;
+        customIconStart = iconStart;
       });
     }
   }
@@ -66,7 +80,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     print(myMapController.userLocation.value);
     GoogleMapController? _mapController;
-    RxDouble _currentZoom = 16.0.obs;
+    RxDouble _currentZoom = 14.0.obs;
 
     return Scaffold(
       body: Obx(() {
@@ -92,12 +106,23 @@ class _MapScreenState extends State<MapScreen> {
                     Marker(
                       markerId: const MarkerId('origin'),
                       position: myMapController.userLocation.value,
-                      icon: customIcon ??
+                      icon: customIconStart ??
                           BitmapDescriptor.defaultMarker, // Icono personalizado
                       infoWindow: const InfoWindow(
                           title: 'Ubicación Actual',
                           snippet: 'Tu ubicación actual'),
                     ),
+                    if (widget.startLocation != null)
+                      Marker(
+                        markerId: const MarkerId('destino'),
+                        position: widget.startLocation ?? LatLng(0.0, 0.0),
+                        icon: customIconEnd ??
+                            BitmapDescriptor
+                                .defaultMarker, // Icono personalizado
+                        infoWindow: const InfoWindow(
+                            title: 'LLegada',
+                            snippet: 'Aqui hay que recojer al cliente'),
+                      ),
                   },
                   onMapCreated: (GoogleMapController controller) {
                     _mapController = controller;

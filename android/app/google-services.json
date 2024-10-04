@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1074180958391",
+    "project_id": "ceibo-taxi",
+    "storage_bucket": "ceibo-taxi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074180958391:android:355c8fec281828372c8532",
+        "android_client_info": {
+          "package_name": "com.ceibocode.ceibotaxi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgfy7YvKK7CX1hP3rswa6Omu132FJkFgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074180958391:android:7ea2b5c753feaba32c8532",
+        "android_client_info": {
+          "package_name": "com.example.app_taxi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgfy7YvKK7CX1hP3rswa6Omu132FJkFgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074180958391:android:816d6060f7cfb6ff2c8532",
+        "android_client_info": {
+          "package_name": "com.example.app_taxis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgfy7YvKK7CX1hP3rswa6Omu132FJkFgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

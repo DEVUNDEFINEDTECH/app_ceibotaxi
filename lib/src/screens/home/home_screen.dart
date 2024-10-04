@@ -85,7 +85,7 @@ class HomeScreen extends GetView<HomeController> {
                         width * 0.4)),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(Routes.BASESDETAIL);
+                    //Get.toNamed(Routes.BASESDETAIL);
                   },
                   child: _card(
                       "Total de bases",

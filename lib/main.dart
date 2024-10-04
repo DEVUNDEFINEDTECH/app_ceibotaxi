@@ -1,16 +1,25 @@
 import 'package:app_taxis/main_binding.dart';
-import 'package:app_taxis/src/global_memory.dart';
+import 'package:app_taxis/src/data/services/push_notifications_service.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
+import 'package:firebase_core/firebase_core.dart';
 //import 'package:app_taxis/src/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:app_taxis/src/global_memory.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
-  Get.put(GlobalMemory());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  //await Firebase.initializeApp();
+  final NotificationService notificationService =
+      Get.put(NotificationService());
+  await notificationService.init();
+  //Get.put(GlobalMemory());
+  //final NotificationService notificationService = Get.put(NotificationService());
   await GetStorage.init();
-  Get.put(GlobalMemory());
   runApp(const MyApp());
 }
 

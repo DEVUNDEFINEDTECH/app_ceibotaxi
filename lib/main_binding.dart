@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class MainBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<GlobalMemory>(() => GlobalMemory());
+    Get.put<GlobalMemory>(GlobalMemory());
     Get.put<LocalStorage>(LocalStorage());
   }
 }

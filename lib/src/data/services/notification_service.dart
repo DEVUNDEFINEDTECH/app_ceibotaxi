@@ -5,7 +5,7 @@ class NotificationService {
       FlutterLocalNotificationsPlugin();
   Future<void> initNotifications() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('ic_launcher');
+        AndroidInitializationSettings('app_icon');
     const DarwinInitializationSettings initializationSettingsIOS =
         DarwinInitializationSettings(
             requestAlertPermission: true,
@@ -28,7 +28,7 @@ class NotificationService {
       'channel_name',
       priority: Priority.high,
       importance: Importance.max,
-      // icon: 'ic_launcher',
+      icon: 'app_icon',
     );
     // var ios = IOSNotificationDetails();
     var platform = NotificationDetails(android: android);

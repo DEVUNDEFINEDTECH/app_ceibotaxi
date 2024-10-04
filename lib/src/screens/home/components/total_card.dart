@@ -31,7 +31,7 @@ class TotalCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 5),
       // color: Colors.grey.shade200,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.red),
+        border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(15.0),
         color: backgroundColor,
         backgroundBlendMode: BlendMode.darken,

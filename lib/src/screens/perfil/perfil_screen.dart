@@ -1,6 +1,7 @@
 import 'package:app_taxis/src/data/services/socket_servicer.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
+import 'package:app_taxis/src/screens/dashboard/driver/dashboard_controller.dart';
 import 'package:app_taxis/src/screens/home/components/total_card.dart';
 import 'package:app_taxis/src/screens/perfil/perfil_controller.dart';
 import 'package:app_taxis/src/theme.dart';
@@ -10,6 +11,8 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class PerfilScreen extends GetView<PerfilController> {
+  final DashboardDriverController dashboardController =
+      Get.put(DashboardDriverController());
   List<String> listGenderText = ["10-8", "10-7"];
   RxBool tabTextIconIndexSelected = true.obs;
   SocketsService socketService = SocketsService();
@@ -17,7 +20,7 @@ class PerfilScreen extends GetView<PerfilController> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> nombres = gm.user!.nombresUsuario.split(' ');
+    List<String> nombres = GlobalMemory.to.user!.nombresUsuario.split(' ');
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -75,10 +78,12 @@ class PerfilScreen extends GetView<PerfilController> {
                             onChanged: (bool value) {
                               if (value) {
                                 socketService.connectSocket();
-                                //notificationService.showNotification(
-                                //  '10-8', 'Bienvenido al martillo');
+                                dashboardController.enableNotifications();
+                                notificationService.showNotification(
+                                    '10-8', 'Bienvenido al martillo');
                               } else {
                                 socketService.disconnectSocket();
+                                dashboardController.enableNotifications();
                               }
                               tabTextIconIndexSelected.value =
                                   !tabTextIconIndexSelected.value;

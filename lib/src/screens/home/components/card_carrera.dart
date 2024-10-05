@@ -89,7 +89,7 @@ class CardCarrer extends StatelessWidget {
                     ))),
                 Expanded(
                   child: TextFormField(
-                    initialValue: carrer.codigocliente != null
+                    initialValue: carrer.direccion != null
                         ? carrer.direccion
                         : carrer.direccionpartida ?? "Sin Dirección",
                     readOnly: true,

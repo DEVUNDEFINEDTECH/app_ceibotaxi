@@ -9,7 +9,7 @@ class Carrera {
   String? apellidomaterno;
   String? telefono;
   String? telefonocelular;
-  String direccion;
+  String? direccion;
   String? ubicacion;
   int? codigocliente;
   int? baseid;
@@ -20,11 +20,11 @@ class Carrera {
   String? modelo;
   String? nombrecliente;
   String? direcciondestino;
-  String? coordenadasdestino;
+  Coordenadas? coordenadasdestino;
   String? direccionpartida;
   String? ubicacionexactacliente;
   String? telefonocliente;
-  String? coordenadaspartida;
+  Coordenadas? coordenadaspartida;
   String? observacion;
   String? estadocarrera;
   DateTime? fecharegistro;
@@ -40,7 +40,7 @@ class Carrera {
       this.apellidomaterno,
       this.telefono,
       this.telefonocelular,
-      required this.direccion,
+      this.direccion,
       this.ubicacion,
       this.codigocliente,
       this.baseid,
@@ -71,7 +71,7 @@ class Carrera {
         apellidomaterno: json["apellidomaterno"] ?? "",
         telefono: json["telefonofijo"] ?? "sin telefono",
         telefonocelular: json["telefonocelular"] ?? "sin celular",
-        direccion: json["direccion"] ?? "Sin Dirección de partida",
+        direccion: json["direccion"],
         ubicacion: json["ubicacionexacta"] ?? "",
         codigocliente: json["codigocliente"],
         baseid: json["baseid"],
@@ -82,11 +82,19 @@ class Carrera {
         modelo: json["modelo"],
         nombrecliente: json["nombrecliente"],
         direcciondestino: json["direcciondestino"],
-        coordenadasdestino: json["coordenadasdestino"],
-        direccionpartida: json["direccionpartida"] ?? "",
+        coordenadasdestino: (json["coordenadasdestino"] != null &&
+                json["coordenadasdestino"] is Map &&
+                json["coordenadasdestino"].isNotEmpty)
+            ? Coordenadas.fromJson(json["coordenadasdestino"])
+            : null,
+        direccionpartida: json["direccionpartida"],
         ubicacionexactacliente: json["ubicacionexacta"],
         telefonocliente: json["telefonocliente"],
-        coordenadaspartida: json["coordenadaspartida"],
+        coordenadaspartida: (json["coordenadaspartida"] != null &&
+                json["coordenadaspartida"] is Map &&
+                json["coordenadaspartida"].isNotEmpty)
+            ? Coordenadas.fromJson(json["coordenadaspartida"])
+            : null,
         observacion: json["observacionpersona"],
         estadocarrera: json["estadocarrera"],
         fecharegistro: json["fecharegistro"] == null
@@ -95,7 +103,9 @@ class Carrera {
         fechamodificacion: json["fechamodificacion"] == null
             ? null
             : DateTime.parse(json["fechamodificacion"]),
-        coordenadasPersona: (json["coordenadaspersona"]) != null
+        coordenadasPersona: (json["coordenadaspersona"] != null &&
+                json["coordenadaspersona"] is Map &&
+                json["coordenadaspersona"].isNotEmpty)
             ? Coordenadas.fromJson(json["coordenadaspersona"])
             : null,
       );

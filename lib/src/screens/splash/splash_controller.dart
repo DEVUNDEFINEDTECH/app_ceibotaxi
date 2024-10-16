@@ -21,38 +21,6 @@ class SplashController extends GetxController {
     await checkAndRequestPermissions();
     await fechData();
   }
-
-  //GlobalMemory gm = Get.find<GlobalMemory>();
-
-  // void validateSession() async {
-  //   try {
-  //     final token = await localStorage.getToken();
-  //     print('token $token');
-  //     if (token != null) {
-  //       final user =
-  //           await autenticationRepositoryInterface.getUserByToken(token);
-  //       print('El user loggeado es: ${user?.username}');
-
-  //       //final cities= await local
-
-  //       if (user != null) {
-  //         GlobalState.to.setUser(user);
-  //         GlobalState.to.setAssignmentManager(user.assignmentmanager![0]);
-  //         Get.toNamed(SgasRoutes.dashboard);
-  //       }
-  //       //Get.toNamed(SgasRoutes.login);
-  //     } else {
-  //       Get.toNamed(SgasRoutes.login);
-  //     }
-  //   } catch (e) {
-  //     print('error fuera: $e');
-  //     error.value = e.toString().replaceAll('Exception: ', '');
-  //     Get.toNamed(SgasRoutes.login);
-  //     Get.snackbar('Error', 'Error de Autenticación: ${error.value}',
-  //         backgroundColor: Colors.red[200]);
-  //   }
-  // }
-
   Future<void> fechData() async {
     final user = GlobalMemory.to.box.hasData('user')
         ? await GlobalMemory.to.box.read('user')
@@ -99,15 +67,12 @@ class SplashController extends GetxController {
   Future<void> checkAndRequestPermissions() async {
     // Verifica si tiene permiso para acceder al GPS
     PermissionStatus locationStatus = await Permission.location.status;
-
     // Si no tiene permiso, solicita permiso
     if (locationStatus != PermissionStatus.granted) {
       locationStatus = await Permission.location.request();
     }
-
     // Verifica si tiene permiso para recibir notificaciones
     PermissionStatus notificationStatus = await Permission.notification.status;
-
     // Si no tiene permiso, solicita permiso
     if (notificationStatus != PermissionStatus.granted) {
       notificationStatus = await Permission.notification.request();

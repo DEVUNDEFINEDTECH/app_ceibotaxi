@@ -65,7 +65,7 @@ class SocketsService extends GetxController {
           } else {}
         });
         _statusServer.value = ServerStatus.OnLine;
-        //notificationService.showNotification('10-8', 'Bienvenido al martillo');
+        notificationService.showNotification('10-8', 'Bienvenido al martillo');
       });
     }
   }

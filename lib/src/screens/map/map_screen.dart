@@ -129,31 +129,27 @@ class _MapScreenState extends State<MapScreen> {
                   },
                 ));
       }),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //const SizedBox(height: 20),
-          FloatingActionButton(
-            mini: true,
-            heroTag: "zoom_in",
-            onPressed: () {
-              _currentZoom.value += 1;
-              _mapController?.animateCamera(CameraUpdate.zoomIn());
-            },
-            child: const Icon(Icons.zoom_in),
-          ),
-          const SizedBox(height: 3),
-          FloatingActionButton(
-            mini: true,
-            heroTag: "zoom_out",
-            onPressed: () {
-              _currentZoom.value -= 1;
-              _mapController?.animateCamera(CameraUpdate.zoomOut());
-            },
-            child: const Icon(Icons.zoom_out),
-          ),
-        ],
-      ),
+      floatingActionButton: widget.startLocation != null
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //const SizedBox(height: 20),
+                FloatingActionButton(
+                  mini: true,
+                  heroTag: "Indicaciones",
+                  onPressed: () {
+                    if (widget.startLocation != null) {
+                      myMapController.openMapWithCoordinates(
+                          widget.startLocation!.latitude,
+                          widget.startLocation!.longitude);
+                    }
+                  },
+                  child: const Icon(Icons.start),
+                ),
+                Text("Indicaciones")
+              ],
+            )
+          : null,
     );
   }
 }

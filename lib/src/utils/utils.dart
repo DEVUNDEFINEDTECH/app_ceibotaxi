@@ -23,19 +23,6 @@ String valorParseado(double number) {
   }
   return number.toString();
 }
-
-void openGoogleMaps(
-    double startLat, double startLng, double endLat, double endLng) async {
-  final Uri googleMapsUrl = Uri.parse(
-    'https://www.google.com/maps/dir/?api=1&origin=$startLat,$startLng&destination=$endLat,$endLng&travelmode=driving',
-  );
-
-  if (await canLaunchUrl(googleMapsUrl)) {
-    await launchUrl(googleMapsUrl);
-  } else {
-    throw 'No se pudo abrir Google Maps';
-  }
-}
 // void showToast(String message) {
 //   EasyLoading.showToast(
 //     message,

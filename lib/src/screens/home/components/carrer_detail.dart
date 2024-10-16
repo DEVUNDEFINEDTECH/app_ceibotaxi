@@ -25,6 +25,13 @@ class CarrerDetailPage extends StatelessWidget {
         carrer.coordenadasPersona!.lat!,
         carrer.coordenadasPersona!.lng!,
       );
+    } else if (carrer.coordenadaspartida != null &&
+        carrer.coordenadaspartida!.lat != null &&
+        carrer.coordenadaspartida!.lng != null) {
+      startLocation = LatLng(
+        carrer.coordenadaspartida!.lat!,
+        carrer.coordenadaspartida!.lng!,
+      );
     } else {
       startLocation = null;
     }
@@ -95,9 +102,13 @@ class CarrerDetailPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-                "${carrer.name} ${carrer.apellidopaterno} ${carrer.apellidomaterno}",
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              carrer.clienteid != null
+                  ? "${carrer.name} ${carrer.apellidopaterno ?? ''} ${carrer.apellidomaterno ?? ''}"
+                  : (carrer.nombrecliente != null
+                      ? carrer.nombrecliente ?? ''
+                      : ''),
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
             Row(
               children: [
                 Icon(

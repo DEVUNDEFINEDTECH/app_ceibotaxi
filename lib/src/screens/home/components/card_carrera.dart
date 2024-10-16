@@ -46,7 +46,11 @@ class CardCarrer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${carrer.name} ${carrer.apellidopaterno} ${carrer.apellidomaterno}",
+                        carrer.clienteid != null
+                            ? "${carrer.name} ${carrer.apellidopaterno ?? ''} ${carrer.apellidomaterno ?? ''}"
+                            : (carrer.nombrecliente != null
+                                ? carrer.nombrecliente ?? ''
+                                : ''),
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(

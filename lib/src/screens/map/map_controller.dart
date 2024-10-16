@@ -4,6 +4,7 @@ import 'package:app_taxis/src/data/services/routes_service.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyMapController extends GetxController {
   StreamSubscription? streamPosition;
@@ -59,6 +60,34 @@ class MyMapController extends GetxController {
   void stopFollowingUnity() async {
     streamPosition?.cancel();
     print('Suscripción de ubicación cancelada');
+  }
+
+  Future<void> openMapWithAddress(String address) async {
+    // Convierte la dirección a un formato que se pueda pasar en la URL
+    final String encodedAddress = Uri.encodeFull(address);
+
+    // URL para abrir Google Maps con una dirección de destino
+    final String googleMapsUrl =
+        "https://www.google.com/maps/search/?api=1&query=$encodedAddress";
+
+    // Revisa si el dispositivo puede abrir la URL y abre Google Maps
+    if (await canLaunch(googleMapsUrl)) {
+      await launch(googleMapsUrl);
+    } else {
+      throw 'No se pudo abrir Google Maps con la dirección proporcionada';
+    }
+  }
+
+  // Método para abrir Google Maps con coordenadas de destino
+  Future<void> openMapWithCoordinates(double lat, double lng) async {
+    final String googleMapsUrl =
+        "https://www.google.com/maps/search/?api=1&query=$lat,$lng";
+
+    if (await canLaunch(googleMapsUrl)) {
+      await launch(googleMapsUrl);
+    } else {
+      throw 'No se pudo abrir Google Maps con las coordenadas proporcionadas';
+    }
   }
 
   @override

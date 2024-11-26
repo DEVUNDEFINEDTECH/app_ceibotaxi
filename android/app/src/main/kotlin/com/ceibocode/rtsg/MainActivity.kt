@@ -1,4 +1,4 @@
-package com.example.app_taxis
+package com.ceibocode.rtsg
 
 import io.flutter.embedding.android.FlutterActivity
 

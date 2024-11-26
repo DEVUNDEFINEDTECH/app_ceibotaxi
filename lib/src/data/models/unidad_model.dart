@@ -15,7 +15,7 @@ class Unidad {
   String apellidomaterno;
   String nombres;
   DateTime fecharegistro;
-  DateTime fechamodificacion;
+  DateTime? fechamodificacion;
 
   Unidad({
     required this.id,
@@ -32,7 +32,7 @@ class Unidad {
     required this.apellidomaterno,
     required this.nombres,
     required this.fecharegistro,
-    required this.fechamodificacion,
+    this.fechamodificacion,
   });
 
   factory Unidad.fromRawJson(String str) => Unidad.fromJson(json.decode(str));
@@ -54,7 +54,8 @@ class Unidad {
         apellidomaterno: json["apellidomaterno"],
         nombres: json["nombres"],
         fecharegistro: DateTime.parse(json["fecharegistro"]),
-        fechamodificacion: DateTime.parse(json["fechamodificacion"]),
+        fechamodificacion: json["fechamodificacion"] =
+            null ?? DateTime.parse(json["fechamodificacion"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -72,6 +73,6 @@ class Unidad {
         "apellidomaterno": apellidomaterno,
         "nombres": nombres,
         "fecharegistro": fecharegistro.toIso8601String(),
-        "fechamodificacion": fechamodificacion.toIso8601String(),
+        "fechamodificacion": fechamodificacion!.toIso8601String(),
       };
 }

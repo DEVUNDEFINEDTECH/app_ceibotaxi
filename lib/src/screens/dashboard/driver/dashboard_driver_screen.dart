@@ -1,4 +1,4 @@
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

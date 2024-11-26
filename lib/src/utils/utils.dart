@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-//import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
 

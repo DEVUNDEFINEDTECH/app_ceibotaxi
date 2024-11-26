@@ -1,4 +1,4 @@
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +7,7 @@ class TotalCard extends StatelessWidget {
       {super.key,
       this.onClick,
       this.icon = Icons.bar_chart_sharp,
-      this.textColor = ColorsApp.lightGreen,
+      this.textColor = Colors.black,
       required this.title,
       this.totalValue = "",
       required this.backgroundColor,
@@ -34,7 +34,7 @@ class TotalCard extends StatelessWidget {
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(15.0),
         color: backgroundColor,
-        backgroundBlendMode: BlendMode.darken,
+        //backgroundBlendMode: BlendMode.darken,
         shape: BoxShape.rectangle,
         boxShadow: [
           BoxShadow(
@@ -74,7 +74,7 @@ class TotalCard extends StatelessWidget {
             onPressed: onClick != null ? () => onClick!() : null,
             icon: Icon(
               Icons.navigate_next_outlined,
-              color: textColor,
+              color: ColorsApp.lightGreen,
               size: Get.width < 370 ? 25 : 30,
             ),
           )

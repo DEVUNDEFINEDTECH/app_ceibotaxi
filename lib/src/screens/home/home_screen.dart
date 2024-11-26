@@ -5,7 +5,7 @@ import 'package:app_taxis/src/screens/dashboard/driver/dashboard_controller.dart
 import 'package:app_taxis/src/screens/home/components/card_carrera.dart';
 import 'package:app_taxis/src/screens/home/components/carrer_detail.dart';
 import 'package:app_taxis/src/screens/home/home_controller.dart';
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,7 +35,7 @@ class HomeScreen extends GetView<HomeController> {
           children: [
             //_perfilData(height: height, width: width, gm: gm),
             const Text(
-              "Ceibo Taxi",
+              "RTSG",
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class HomeScreen extends GetView<HomeController> {
                         width * 0.4)),
                 GestureDetector(
                   onTap: () {
-                    //Get.toNamed(Routes.BASESDETAIL);
+                    Get.toNamed(Routes.BASESDETAIL);
                   },
                   child: _card(
                       "Total de bases",

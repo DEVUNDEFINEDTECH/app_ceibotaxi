@@ -1,5 +1,5 @@
 import 'package:app_taxis/src/screens/auth/auth_controller.dart';
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,15 +20,22 @@ class LoginScreen extends GetView<AuthController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image(
-                  image: const AssetImage('assets/images/logo.png'),
+                  image: const AssetImage('assets/images/logo_rtsg.png'),
                   height: height * 0.15,
                   width: width * 0.4,
                 ),
-                Image(
-                  image: const AssetImage('assets/images/nombre.png'),
-                  height: height * 0.15,
-                  width: width * 0.2,
-                ),
+                Center(
+                    child: Text(
+                  'RadioTaxi "San Gregorio"',
+                  style: TextStyle(fontSize: 25),
+                )),
+
+                //   width: width * 0.2,),
+                // Image(
+                //   image: const AssetImage('assets/images/nombre.png'),
+                //   height: height * 0.15,
+                //   width: width * 0.2,
+                // ),
                 SizedBox(height: height * 0.015),
                 const Center(
                   child: Text(
@@ -67,38 +74,45 @@ class LoginScreen extends GetView<AuthController> {
                   cursorColor: Colors.grey,
                 ),
                 SizedBox(height: height * 0.03),
-                TextFormField(
-                  controller: controller.passwordController,
-                  decoration: InputDecoration(
-                    labelText: 'Contraseña',
-                    prefixIcon: const Icon(
-                      Icons.lock,
-                      color: Colors.grey,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
+                Obx(() => TextFormField(
+                      controller: controller.passwordController,
+                      decoration: InputDecoration(
+                        labelText: 'Contraseña',
+                        prefixIcon: IconButton(
+                          icon: Icon(
+                              controller.isVisible.value
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.grey),
+                          onPressed: () {
+                            controller.isVisible.value =
+                                !controller.isVisible.value;
+                          },
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        labelStyle: const TextStyle(
+                          color: Colors.grey,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                      ),
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 12,
-                    ),
-                    labelStyle: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  obscureText: true,
-                  style: const TextStyle(fontSize: 15),
-                  cursorColor: Colors.grey,
-                ),
+                      obscureText: !controller.isVisible.value,
+                      style: const TextStyle(fontSize: 15),
+                      cursorColor: Colors.grey,
+                    )),
                 SizedBox(height: height * 0.06),
                 Obx(() {
                   return ElevatedButton(

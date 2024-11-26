@@ -1,8 +1,7 @@
 import 'package:app_taxis/src/data/models/base_model.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/screens/home/home_controller.dart';
-import 'package:app_taxis/src/theme.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

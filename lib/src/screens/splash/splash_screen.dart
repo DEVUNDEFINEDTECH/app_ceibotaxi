@@ -1,3 +1,4 @@
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,13 +24,17 @@ class SplashScreen extends GetView<SplashController> {
             Image.asset(
               height: height * 0.2,
               width: width * 0.6,
-              'assets/images/logo.png',
+              'assets/images/logo_rtsg.png',
+            ),
+            Image.asset(
+              width: width * 0.6,
+              'assets/images/slogan.png',
             ),
             const SizedBox(
               height: 50,
             ),
             LinearProgressIndicator(
-              color: Get.theme.colorScheme.primary,
+              color: ColorsApp.lightGreen,
             ),
             const SizedBox(height: 20),
             const Text("Cargando..."),

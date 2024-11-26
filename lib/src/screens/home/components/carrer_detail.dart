@@ -1,6 +1,6 @@
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/screens/map/map_screen.dart';
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

@@ -12,6 +12,7 @@ class AuthController extends GetxController {
   AuthController({required this.localStorage});
 
   RxBool isLoading = false.obs;
+  RxBool isVisible = false.obs;
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final error = ''.obs;

@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:app_taxis/src/data/models/carrera_model.dart';
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -128,18 +128,18 @@ class CardCarrer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    onPressed: finalizar,
-                    child: const Text(
-                      "Finalizar",
-                      style: TextStyle(color: ColorsApp.red),
-                    )),
+                // ElevatedButton(
+                //     style: ElevatedButton.styleFrom(
+                //       backgroundColor: Colors.white,
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(50),
+                //       ),
+                //     ),
+                //     onPressed: finalizar,
+                //     child: const Text(
+                //       "Finalizar",
+                //       style: TextStyle(color: Colors.red),
+                //     )),
                 SizedBox(width: width * 0.03),
                 Expanded(
                   child: ElevatedButton(

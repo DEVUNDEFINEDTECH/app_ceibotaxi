@@ -4,7 +4,7 @@ import 'package:app_taxis/src/routes/app_pages.dart';
 import 'package:app_taxis/src/screens/dashboard/driver/dashboard_controller.dart';
 import 'package:app_taxis/src/screens/home/components/total_card.dart';
 import 'package:app_taxis/src/screens/perfil/perfil_controller.dart';
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -164,7 +164,7 @@ class PerfilScreen extends GetView<PerfilController> {
                               backgroundColor: Colors.white,
                               child: IconButton(
                                 onPressed: () {
-                                  Get.toNamed(Routes.USER);
+                                  //Get.toNamed(Routes.USER);
                                 },
                                 icon: const Icon(
                                   Icons.edit,
@@ -267,7 +267,7 @@ class PerfilScreen extends GetView<PerfilController> {
                   width: width,
                   height: height * 0.07,
                   onClick: () {
-                    //Get.toNamed(Routes.ANALITYCDETAIL);
+                    Get.toNamed(Routes.ANALITYCDETAIL);
                   }),
               TotalCard(
                 icon: Icons.add_location_alt_outlined,
@@ -296,13 +296,13 @@ class PerfilScreen extends GetView<PerfilController> {
                       Expanded(child: Text("")),
                       Icon(
                         Icons.logout_outlined,
-                        color: ColorsApp.red,
+                        color: Colors.red,
                       ),
                       Text(
                         'Cerrar Sesión',
                         style: TextStyle(
                           fontSize: 18,
-                          color: ColorsApp.red,
+                          color: Colors.red,
                         ),
                       ),
                       Expanded(child: Text("")),

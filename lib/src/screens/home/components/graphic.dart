@@ -1,4 +1,4 @@
-import 'package:app_taxis/src/theme.dart';
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +45,7 @@ class MyBarChart extends StatelessWidget {
 
   Widget getTitles(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: ColorsApp.blue,
+      color: Colors.blue,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
@@ -125,7 +125,7 @@ class MyBarChart extends StatelessWidget {
 
   LinearGradient get _barsGradient => const LinearGradient(
         colors: [
-          ColorsApp.red,
+          Colors.red,
           ColorsApp.lightGreen,
         ],
         begin: Alignment.bottomCenter,

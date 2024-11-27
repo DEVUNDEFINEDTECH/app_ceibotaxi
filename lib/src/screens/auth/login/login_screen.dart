@@ -125,8 +125,8 @@ class LoginScreen extends GetView<AuthController> {
                     ),
                     child: controller.isLoading.value
                         ? const CircularProgressIndicator(
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                ColorsApp.lightGreen),
                           )
                         : const Text(
                             'Iniciar Sesión',

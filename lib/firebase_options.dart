@@ -41,48 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB5y_DdYAmThwGiksBPNHBYJ0gurvFeofY',
-    appId: '1:1074180958391:web:0db0441ea3dcab472c8532',
-    messagingSenderId: '1074180958391',
-    projectId: 'ceibo-taxi',
-    authDomain: 'ceibo-taxi.firebaseapp.com',
-    storageBucket: 'ceibo-taxi.appspot.com',
-    measurementId: 'G-Y09FN8TCRK',
+    apiKey: 'AIzaSyDH46DCEhIrqNd5iwChzwhLh7DMhV2hHlA',
+    appId: '1:517076721221:web:63a858a8c1c3f0e0630d2c',
+    messagingSenderId: '517076721221',
+    projectId: 'rtsg-97a02',
+    authDomain: 'rtsg-97a02.firebaseapp.com',
+    storageBucket: 'rtsg-97a02.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCgfy7YvKK7CX1hP3rswa6Omu132FJkFgc',
-    appId: '1:1074180958391:android:816d6060f7cfb6ff2c8532',
-    messagingSenderId: '1074180958391',
-    projectId: 'ceibo-taxi',
-    storageBucket: 'ceibo-taxi.appspot.com',
+    apiKey: 'AIzaSyAD4znR4EVLJgeWgO3UFN8HWAlTNVIU0rE',
+    appId: '1:517076721221:android:fab47a66e0b7f20d630d2c',
+    messagingSenderId: '517076721221',
+    projectId: 'rtsg-97a02',
+    storageBucket: 'rtsg-97a02.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDBs9BHQwcb00PSyaxDMWF_vPdCaZfWmjM',
-    appId: '1:1074180958391:ios:e2efc985b12c64bc2c8532',
-    messagingSenderId: '1074180958391',
-    projectId: 'ceibo-taxi',
-    storageBucket: 'ceibo-taxi.appspot.com',
-    iosBundleId: 'com.example.appTaxis',
+    apiKey: 'AIzaSyCPFTYI_TLyk7eiGmcRWGrLIZ1zfsPxFbw',
+    appId: '1:517076721221:ios:988486d80b46251f630d2c',
+    messagingSenderId: '517076721221',
+    projectId: 'rtsg-97a02',
+    storageBucket: 'rtsg-97a02.firebasestorage.app',
+    iosBundleId: 'com.ceibocode.rtsg',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDBs9BHQwcb00PSyaxDMWF_vPdCaZfWmjM',
-    appId: '1:1074180958391:ios:e2efc985b12c64bc2c8532',
-    messagingSenderId: '1074180958391',
-    projectId: 'ceibo-taxi',
-    storageBucket: 'ceibo-taxi.appspot.com',
+    apiKey: 'AIzaSyCPFTYI_TLyk7eiGmcRWGrLIZ1zfsPxFbw',
+    appId: '1:517076721221:ios:db6bba9baafe7f05630d2c',
+    messagingSenderId: '517076721221',
+    projectId: 'rtsg-97a02',
+    storageBucket: 'rtsg-97a02.firebasestorage.app',
     iosBundleId: 'com.example.appTaxis',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyB5y_DdYAmThwGiksBPNHBYJ0gurvFeofY',
-    appId: '1:1074180958391:web:acc8ae143445864a2c8532',
-    messagingSenderId: '1074180958391',
-    projectId: 'ceibo-taxi',
-    authDomain: 'ceibo-taxi.firebaseapp.com',
-    storageBucket: 'ceibo-taxi.appspot.com',
-    measurementId: 'G-NJM1TM4ZQ3',
+    apiKey: 'AIzaSyDH46DCEhIrqNd5iwChzwhLh7DMhV2hHlA',
+    appId: '1:517076721221:web:fe802830ccf550b2630d2c',
+    messagingSenderId: '517076721221',
+    projectId: 'rtsg-97a02',
+    authDomain: 'rtsg-97a02.firebaseapp.com',
+    storageBucket: 'rtsg-97a02.firebasestorage.app',
   );
 }

@@ -7,6 +7,8 @@ import 'package:app_taxis/src/data/services/carrers_service.dart';
 import 'package:app_taxis/src/data/services/local_storage_service.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
+import 'package:app_taxis/src/screens/splash/components/consent_dialog.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -16,11 +18,12 @@ class SplashController extends GetxController {
   SplashController({required this.localStorage});
 
   @override
-  void onInit() async {
-    super.onInit();
+  void onReady() async {
+    super.onReady();
     await checkAndRequestPermissions();
     await fechData();
   }
+
   Future<void> fechData() async {
     final user = GlobalMemory.to.box.hasData('user')
         ? await GlobalMemory.to.box.read('user')
@@ -65,20 +68,34 @@ class SplashController extends GetxController {
   }
 
   Future<void> checkAndRequestPermissions() async {
+    // Muestra un cuadro de diálogo para el consentimiento
+    bool? consent = GlobalMemory.to.box.read('consent');
+    if (consent == null || consent == false) {
+      bool isConsentGiven = await showConsentDialog();
+      if (isConsentGiven) {
+        GlobalMemory.to.box.write('consent', true);
+      } else {
+        Get.snackbar('Permiso Denegado',
+            'Para usar la aplicación necesitamos acceder a tu ubicación.');
+        SystemNavigator.pop();
+        return;
+      }
+    }
+
     // Verifica si tiene permiso para acceder al GPS
     PermissionStatus locationStatus = await Permission.location.status;
+
     // Si no tiene permiso, solicita permiso
     if (locationStatus != PermissionStatus.granted) {
       locationStatus = await Permission.location.request();
     }
+
     // Verifica si tiene permiso para recibir notificaciones
     PermissionStatus notificationStatus = await Permission.notification.status;
     // Si no tiene permiso, solicita permiso
     if (notificationStatus != PermissionStatus.granted) {
       notificationStatus = await Permission.notification.request();
     }
-
-    // Puedes agregar más permisos según sea necesario
 
     // Verifica el estado de los permisos
     if (locationStatus == PermissionStatus.granted &&
@@ -87,6 +104,34 @@ class SplashController extends GetxController {
     } else {
       // Al menos uno de los permisos no fue otorgado
       // Puedes mostrar un mensaje al usuario informándole que necesita otorgar permisos
+      Get.snackbar('Permisos Requeridos',
+          'Necesitamos permisos para acceder a tu ubicación y notificaciones.');
     }
   }
+
+  // Future<void> checkAndRequestPermissions() async {
+  //   // Verifica si tiene permiso para acceder al GPS
+  //   PermissionStatus locationStatus = await Permission.location.status;
+  //   // Si no tiene permiso, solicita permiso
+  //   if (locationStatus != PermissionStatus.granted) {
+  //     locationStatus = await Permission.location.request();
+  //   }
+  //   // Verifica si tiene permiso para recibir notificaciones
+  //   PermissionStatus notificationStatus = await Permission.notification.status;
+  //   // Si no tiene permiso, solicita permiso
+  //   if (notificationStatus != PermissionStatus.granted) {
+  //     notificationStatus = await Permission.notification.request();
+  //   }
+
+  //   // Puedes agregar más permisos según sea necesario
+
+  //   // Verifica el estado de los permisos
+  //   if (locationStatus == PermissionStatus.granted &&
+  //       notificationStatus == PermissionStatus.granted) {
+  //     // Los permisos están otorgados, puedes continuar con tu lógica
+  //   } else {
+  //     // Al menos uno de los permisos no fue otorgado
+  //     // Puedes mostrar un mensaje al usuario informándole que necesita otorgar permisos
+  //   }
+  // }
 }

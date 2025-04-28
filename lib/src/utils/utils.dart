@@ -29,7 +29,7 @@ Future<void> textToSpeech(String text) async {
   }
   FlutterTts flutterTts = FlutterTts();
 
-  await flutterTts.setLanguage('es-ES');
+  await flutterTts.setLanguage('es-EC');
   await flutterTts.setPitch(1.0);
   await flutterTts.speak(text);
   print("Text to Speech: $text");

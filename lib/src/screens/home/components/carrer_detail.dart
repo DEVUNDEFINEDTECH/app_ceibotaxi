@@ -1,6 +1,7 @@
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/screens/map/map_screen.dart';
 import 'package:app_taxis/src/config/theme.dart';
+import 'package:app_taxis/src/screens/widgets/audio_player.dart';
 import 'package:app_taxis/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,7 +68,12 @@ class CarrerDetailPage extends StatelessWidget {
                       child: Text(
                     "Detalle Carrera",
                     style: TextStyle(fontSize: 25),
-                  ))
+                  )),
+                  IconButton(
+                      icon: Icon(Icons.play_arrow),
+                      onPressed: () async {
+                        await playAudioFromUrl();
+                      })
                 ],
               ),
               Expanded(child: SizedBox()),

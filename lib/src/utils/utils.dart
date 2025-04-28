@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
 
@@ -33,6 +34,14 @@ Future<void> textToSpeech(String text) async {
   await flutterTts.setPitch(1.0);
   await flutterTts.speak(text);
   print("Text to Speech: $text");
+}
+
+final player = AudioPlayer();
+
+Future<void> playAudioFromUrl() async {
+  const audioUrl =
+      'https://drive.google.com/uc?export=download&id=131V0HDgn9i3SXsGBHtXDIhIeKW2lRkae';
+  await player.play(UrlSource(audioUrl));
 }
 // void showToast(String message) {
 //   EasyLoading.showToast(

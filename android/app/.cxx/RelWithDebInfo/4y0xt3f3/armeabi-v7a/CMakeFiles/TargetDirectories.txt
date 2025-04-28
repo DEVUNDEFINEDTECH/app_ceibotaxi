@@ -1,0 +1,2 @@
+D:/Proyectos/movil/app_taxis/android/app/.cxx/RelWithDebInfo/4y0xt3f3/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Proyectos/movil/app_taxis/android/app/.cxx/RelWithDebInfo/4y0xt3f3/armeabi-v7a/CMakeFiles/rebuild_cache.dir

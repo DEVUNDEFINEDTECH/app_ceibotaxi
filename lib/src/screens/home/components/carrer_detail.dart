@@ -126,7 +126,7 @@ class CarrerDetailPage extends StatelessWidget {
               ],
             ),
             Text(
-              "Coordenadas: ${carrer.ubicacionexactacliente}",
+              "Coordenadas: ${carrer.ubicacionexactacliente ?? carrer.direccionpartida}",
               style: const TextStyle(fontSize: 15, color: Colors.black),
             ),
             const Divider(

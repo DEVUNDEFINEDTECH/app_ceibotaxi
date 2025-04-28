@@ -1,6 +1,7 @@
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/screens/map/map_screen.dart';
 import 'package:app_taxis/src/config/theme.dart';
+import 'package:app_taxis/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -101,13 +102,23 @@ class CarrerDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              carrer.clienteid != null
-                  ? "${carrer.name} ${carrer.apellidopaterno ?? ''} ${carrer.apellidomaterno ?? ''}"
-                  : (carrer.nombrecliente != null
-                      ? carrer.nombrecliente ?? ''
-                      : ''),
-              style: const TextStyle(fontWeight: FontWeight.bold),
+            Row(
+              children: [
+                Text(
+                  carrer.clienteid != null
+                      ? "${carrer.name} ${carrer.apellidopaterno ?? ''} ${carrer.apellidomaterno ?? ''}"
+                      : (carrer.nombrecliente != null
+                          ? carrer.nombrecliente ?? ''
+                          : ''),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                    onPressed: () async {
+                      await textToSpeech(carrer.ubicacionexactacliente ??
+                          carrer.direccionpartida!);
+                    },
+                    icon: Icon(Icons.keyboard_voice_outlined))
+              ],
             ),
             Row(
               children: [

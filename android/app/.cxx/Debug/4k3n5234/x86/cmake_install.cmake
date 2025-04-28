@@ -51,4 +51,4 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 file(WRITE "D:/Proyectos/movil/app_taxis/android/app/.cxx/Debug/4k3n5234/x86/${CMAKE_INSTALL_MANIFEST}"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
+     "${CMAKE_INSTALL__CONTENT}")

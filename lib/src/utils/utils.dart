@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
 
@@ -20,6 +21,18 @@ String valorParseado(double number) {
     return intPart.toString();
   }
   return number.toString();
+}
+
+Future<void> textToSpeech(String text) async {
+  if (text.isEmpty) {
+    return;
+  }
+  FlutterTts flutterTts = FlutterTts();
+
+  await flutterTts.setLanguage('es-ES');
+  await flutterTts.setPitch(1.0);
+  await flutterTts.speak(text);
+  print("Text to Speech: $text");
 }
 // void showToast(String message) {
 //   EasyLoading.showToast(

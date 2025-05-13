@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:517076721221:android:fab47a66e0b7f20d630d2c",
+        "mobilesdk_app_id": "1:517076721221:android:9159eed151eab93b630d2c",
         "android_client_info": {
-          "package_name": "com.ceibocode.rtsg"
+          "package_name": "com.cacicustech.rtsg"
         }
       },
       "oauth_client": [],

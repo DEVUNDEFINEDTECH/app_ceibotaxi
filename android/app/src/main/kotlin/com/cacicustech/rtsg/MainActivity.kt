@@ -1,4 +1,4 @@
-package com.ceibocode.rtsg
+package com.cacicustech.rtsg
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -27,6 +27,7 @@ class Carrera {
   Coordenadas? coordenadaspartida;
   String? observacion;
   String? estadocarrera;
+  String? audio;
   DateTime? fecharegistro;
   DateTime? fechamodificacion;
   Coordenadas? coordenadasPersona;
@@ -58,6 +59,7 @@ class Carrera {
       this.coordenadaspartida,
       this.observacion,
       this.estadocarrera,
+      this.audio,
       this.fecharegistro,
       this.fechamodificacion,
       this.coordenadasPersona});
@@ -97,6 +99,7 @@ class Carrera {
             : null,
         observacion: json["observacionpersona"],
         estadocarrera: json["estadocarrera"],
+        audio: json["audio"],
         fecharegistro: json["fecharegistro"] == null
             ? null
             : DateTime.parse(json["fecharegistro"]),
@@ -137,6 +140,7 @@ class Carrera {
         "coordenadaspartida": coordenadaspartida,
         "observacion": observacion,
         "estadocarrera": estadocarrera,
+        "audio": audio,
         "fecharegistro": fecharegistro?.toIso8601String(),
         "fechamodificacion": fechamodificacion?.toIso8601String(),
       };

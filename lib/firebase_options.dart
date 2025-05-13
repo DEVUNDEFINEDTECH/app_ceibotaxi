@@ -83,4 +83,5 @@ class DefaultFirebaseOptions {
     authDomain: 'rtsg-97a02.firebaseapp.com',
     storageBucket: 'rtsg-97a02.firebasestorage.app',
   );
+
 }

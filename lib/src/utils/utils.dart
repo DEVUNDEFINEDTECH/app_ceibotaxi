@@ -31,17 +31,17 @@ Future<void> textToSpeech(String text) async {
   FlutterTts flutterTts = FlutterTts();
 
   await flutterTts.setLanguage('es-EC');
-  await flutterTts.setPitch(1.0);
+  await flutterTts.setPitch(0.5);
   await flutterTts.speak(text);
   print("Text to Speech: $text");
 }
 
 final player = AudioPlayer();
 
-Future<void> playAudioFromUrl() async {
-  const audioUrl =
-      'https://drive.google.com/uc?export=download&id=131V0HDgn9i3SXsGBHtXDIhIeKW2lRkae';
-  await player.play(UrlSource(audioUrl));
+Future<void> playAudioFromUrl(String audio) async {
+  // const audioUrl =
+  //     'https://drive.google.com/uc?export=download&id=131V0HDgn9i3SXsGBHtXDIhIeKW2lRkae';
+  await player.play(UrlSource(audio));
 }
 // void showToast(String message) {
 //   EasyLoading.showToast(

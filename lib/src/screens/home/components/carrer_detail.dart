@@ -1,7 +1,7 @@
 import 'package:app_taxis/src/data/models/carrera_model.dart';
+import 'package:app_taxis/src/screens/home/home_controller.dart';
 import 'package:app_taxis/src/screens/map/map_screen.dart';
 import 'package:app_taxis/src/config/theme.dart';
-import 'package:app_taxis/src/screens/widgets/audio_player.dart';
 import 'package:app_taxis/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CarrerDetailPage extends StatelessWidget {
   final Carrera carrer;
+  final HomeController controller = Get.find<HomeController>();
 
   CarrerDetailPage({
     required this.carrer,
@@ -64,16 +65,25 @@ class CarrerDetailPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Center(
-                      child: Text(
-                    "Detalle Carrera",
-                    style: TextStyle(fontSize: 25),
-                  )),
-                  IconButton(
-                      icon: Icon(Icons.play_arrow),
-                      onPressed: () async {
-                        await playAudioFromUrl();
-                      })
+                  Expanded(
+                    child: Center(
+                      child: const Text(
+                        "Detalle Carrera",
+                        style: TextStyle(fontSize: 25),
+                      ),
+                    ),
+                  ),
+                  // Botón de audio dinámico
+                  if (carrer.audio != null)
+                    Obx(() => IconButton(
+                          icon: Icon(controller.isPlaying.value
+                              ? Icons.stop
+                              : Icons.play_arrow),
+                          onPressed: () =>
+                              controller.toggleAudio(carrer.audio!),
+                        ))
+                  else
+                    SizedBox(width: height * 0.05),
                 ],
               ),
               Expanded(child: SizedBox()),

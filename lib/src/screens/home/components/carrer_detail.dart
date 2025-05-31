@@ -87,7 +87,7 @@ class CarrerDetailPage extends StatelessWidget {
                 ],
               ),
               Expanded(child: SizedBox()),
-              card_detail(height, width),
+              card_detail(context, height, width),
             ],
           )
         ],
@@ -95,7 +95,7 @@ class CarrerDetailPage extends StatelessWidget {
     ));
   }
 
-  Container card_detail(double height, double width) {
+  Container card_detail(BuildContext context, double height, double width) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       padding: const EdgeInsets.all(20),
@@ -136,6 +136,66 @@ class CarrerDetailPage extends StatelessWidget {
                     icon: Icon(Icons.keyboard_voice_outlined))
               ],
             ),
+            if (carrer.telefonocliente != null)
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      carrer.telefonocliente!,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () =>
+                        openWhatsApp(context, carrer.telefonocliente!),
+                    icon: Icon(
+                      Icons.message,
+                      color: ColorsApp.lightGreen,
+                      size: height * 0.03,
+                    ),
+                  ),
+                  SizedBox(width: width * 0.03),
+                  IconButton(
+                    onPressed: () => call(context, carrer.telefonocelular!),
+                    icon: Icon(
+                      Icons.phone_outlined,
+                      color: ColorsApp.lightGreen,
+                      size: height * 0.03,
+                    ),
+                  ),
+                ],
+              ),
+            if (carrer.telefonocelular != null)
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      carrer.telefonocelular!,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () =>
+                        openWhatsApp(context, carrer.telefonocelular!),
+                    icon: Icon(
+                      Icons.message,
+                      color: ColorsApp.lightGreen,
+                      size: height * 0.03,
+                    ),
+                  ),
+                  SizedBox(width: width * 0.03),
+                  IconButton(
+                    onPressed: () => call(context, carrer.telefonocelular!),
+                    icon: Icon(
+                      Icons.phone_outlined,
+                      color: ColorsApp.lightGreen,
+                      size: height * 0.03,
+                    ),
+                  ),
+                ],
+              ),
             Row(
               children: [
                 Icon(

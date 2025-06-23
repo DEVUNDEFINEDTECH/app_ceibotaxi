@@ -17,6 +17,39 @@ class PerfilScreen extends GetView<PerfilController> {
   RxBool tabTextIconIndexSelected = true.obs;
   SocketsService socketService = SocketsService();
   PerfilScreen({super.key});
+  void toggleTracking() {
+    dashboardController.isTracking.value =
+        !dashboardController.isTracking.value;
+    socketService.startLocationTracking(
+        tracking: dashboardController.isTracking.value);
+  }
+
+  void confirmTrackingToggle() {
+    final enable = !dashboardController.isTracking.value;
+
+    Get.dialog(
+      AlertDialog(
+        title: Text(
+            enable ? 'Activar seguimiento 501' : 'Desactivar seguimiento 501'),
+        content: Text(enable
+            ? '¿Estás seguro que quieres activar el seguimiento detallado? Esto consumirá más batería y datos.'
+            : '¿Deseas detener el seguimiento detallado?'),
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(), // Cierra el diálogo sin hacer nada
+            child: Text('Cancelar'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Get.back(); // Cierra el diálogo
+              toggleTracking(); // Cambia el estado
+            },
+            child: Text('Confirmar'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +111,7 @@ class PerfilScreen extends GetView<PerfilController> {
                             onChanged: (bool value) {
                               if (value) {
                                 socketService.connectSocket();
+                                socketService.startLocationTracking();
                                 dashboardController.enableNotifications();
                                 notificationService.showNotification(
                                     '10-8', 'Bienvenido al martillo');
@@ -279,12 +313,21 @@ class PerfilScreen extends GetView<PerfilController> {
                   Get.toNamed(Routes.BASESDETAIL);
                 },
               ),
-              TotalCard(
-                  icon: Icons.wallet_outlined,
-                  title: "Lista de Precios",
+              Obx(() {
+                final trackingActive = dashboardController.isTracking.value;
+
+                return TotalCard(
+                  icon: trackingActive ? Icons.gps_fixed : Icons.gps_not_fixed,
+                  title: trackingActive ? "501 activo" : "Solicitar 501",
                   backgroundColor: Colors.white,
                   width: width,
-                  height: height * 0.07),
+                  height: height * 0.07,
+                  onClick: confirmTrackingToggle,
+                  textColor: trackingActive
+                      ? Colors.red
+                      : Colors.black, // Color del icono
+                );
+              }),
               SizedBox(
                 width: width,
                 child: TextButton(

@@ -99,7 +99,7 @@ class CarrerDetailPage extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       padding: const EdgeInsets.all(20),
-      height: height * 0.2,
+      height: height * 0.3,
       width: width,
       decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.5),
@@ -166,7 +166,8 @@ class CarrerDetailPage extends StatelessWidget {
                   ),
                 ],
               ),
-            if (carrer.telefonocelular != null)
+            if (carrer.telefonocelular != null &&
+                carrer.telefonocelular != carrer.telefonocliente)
               Row(
                 children: [
                   Expanded(

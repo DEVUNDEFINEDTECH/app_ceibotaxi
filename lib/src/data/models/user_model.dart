@@ -36,7 +36,7 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        cedula: json["cedula"],
+        cedula: json["cedulausuario"],
         estado: json["estado"],
         idpersona: json["idpersona"],
         idusuario: json["idusuario"],
@@ -56,7 +56,7 @@ class User {
       );
 
   Map<String, dynamic> toJson() => {
-        "cedula": cedula,
+        "cedulausuario": cedula,
         "estado": estado,
         "idpersona": idpersona,
         "idusuario": idusuario,

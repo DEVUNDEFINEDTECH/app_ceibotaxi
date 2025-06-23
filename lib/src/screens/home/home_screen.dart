@@ -9,11 +9,10 @@ import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// ignore: must_be_immutable
 class HomeScreen extends GetView<HomeController> {
-  CarrersController carrers_controller = Get.find<CarrersController>();
-  GlobalMemory gm = Get.find<GlobalMemory>();
-  DashboardDriverController dc = Get.find<DashboardDriverController>();
+  final CarrersController carrers_controller = Get.find<CarrersController>();
+  final GlobalMemory gm = Get.find<GlobalMemory>();
+  final DashboardDriverController dc = Get.find<DashboardDriverController>();
 
   HomeScreen({super.key});
 

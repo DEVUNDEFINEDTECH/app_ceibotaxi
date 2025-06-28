@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app_taxis/src/data/models/base_model.dart';
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/data/models/unidad_model.dart';
@@ -11,7 +13,9 @@ import 'package:app_taxis/src/screens/splash/components/consent_dialog.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:http/http.dart' as http;
 
 class SplashController extends GetxController {
   final LocalStorage localStorage;
@@ -109,29 +113,27 @@ class SplashController extends GetxController {
     }
   }
 
-  // Future<void> checkAndRequestPermissions() async {
-  //   // Verifica si tiene permiso para acceder al GPS
-  //   PermissionStatus locationStatus = await Permission.location.status;
-  //   // Si no tiene permiso, solicita permiso
-  //   if (locationStatus != PermissionStatus.granted) {
-  //     locationStatus = await Permission.location.request();
-  //   }
-  //   // Verifica si tiene permiso para recibir notificaciones
-  //   PermissionStatus notificationStatus = await Permission.notification.status;
-  //   // Si no tiene permiso, solicita permiso
-  //   if (notificationStatus != PermissionStatus.granted) {
-  //     notificationStatus = await Permission.notification.request();
-  //   }
+  Future<void> checkAppVersion() async {
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-  //   // Puedes agregar más permisos según sea necesario
+    final String currentVersion = packageInfo.version; // e.g., "1.0.3"
+    final String buildNumber = packageInfo.buildNumber; // e.g., "5"
 
-  //   // Verifica el estado de los permisos
-  //   if (locationStatus == PermissionStatus.granted &&
-  //       notificationStatus == PermissionStatus.granted) {
-  //     // Los permisos están otorgados, puedes continuar con tu lógica
-  //   } else {
-  //     // Al menos uno de los permisos no fue otorgado
-  //     // Puedes mostrar un mensaje al usuario informándole que necesita otorgar permisos
-  //   }
-  // }
+    print('Versión actual: $currentVersion (build $buildNumber)');
+
+    // Aquí puedes hacer tu petición al endpoint para comparar:
+    final response =
+        await http.get(Uri.parse('https://tuservidor.com/api/version'));
+
+    if (response.statusCode == 200) {
+      final latestVersion = jsonDecode(response.body)['latestVersion'];
+
+      if (currentVersion != latestVersion) {
+        // Mostrar alerta, redirigir a tienda, etc.
+        print('¡Hay una nueva versión disponible!');
+      }
+    } else {
+      print('Error al verificar la versión');
+    }
+  }
 }

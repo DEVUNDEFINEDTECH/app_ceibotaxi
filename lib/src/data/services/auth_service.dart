@@ -1,5 +1,6 @@
 //Importacion de paquetes
 import 'dart:async';
+import 'package:app_taxis/src/network/dio_client.dart';
 import 'package:dio/dio.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 //Importaciones de la app
@@ -54,14 +55,19 @@ class AuthenticationService {
 
       print('Versión actual: $currentVersion (build $buildNumber)');
 
-      final response = await _dio.get('https://tuservidor.com/api/version');
+      final response = await DioClient.dio.get(
+        '$baseUrl/api/v1/check.update',
+        queryParameters: {'currentVersionCode': currentVersion},
+      );
 
       if (response.statusCode == 200) {
-        final latestVersion = response.data['latestVersion'];
+        //final latestVersion = response.data['latestVersion'];
+        final estado = response.data['estado'];
+        final url = response.data['downloadUrl'];
 
-        if (currentVersion != latestVersion) {
+        if (estado) {
           print('¡Hay una nueva versión disponible!');
-          return latestVersion;
+          return url;
         } else {
           print('La app está actualizada.');
         }

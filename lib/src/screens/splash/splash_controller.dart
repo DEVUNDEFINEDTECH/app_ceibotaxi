@@ -14,6 +14,7 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SplashController extends GetxController {
   final LocalStorage localStorage;
@@ -124,8 +125,19 @@ class SplashController extends GetxController {
               'Por favor actualiza la app a la versión más reciente.\n\nNueva versión: $latestVersion'),
           actions: [
             TextButton(
-              onPressed: () {
-                SystemNavigator.pop(); // O redirigir a la tienda
+              // onPressed: () {
+              //   SystemNavigator.pop(); // O redirigir a la tienda
+              // },
+              onPressed: () async {
+                final url = Uri.parse(latestVersion);
+
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                } else {
+                  // En caso de que falle
+                  Get.snackbar(
+                      'Error', 'No se pudo abrir el enlace de descarga');
+                }
               },
               child: const Text('Actualizar'),
             ),

@@ -10,6 +10,7 @@ class SplashBinding extends Bindings {
     //     () => SplashController(localStorage: Get.find()));
     Get.put(SplashController(
       localStorage: Get.find(), // Inyecta la dependencia de localStorage
+      authService: Get.find(), // Inyecta la dependencia de authService
     ));
   }
 }

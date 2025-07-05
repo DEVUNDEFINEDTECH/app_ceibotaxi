@@ -1,29 +1,29 @@
-import 'dart:convert';
-
 import 'package:app_taxis/src/data/models/base_model.dart';
 import 'package:app_taxis/src/data/models/carrera_model.dart';
 import 'package:app_taxis/src/data/models/unidad_model.dart';
 import 'package:app_taxis/src/data/models/user_model.dart';
 import 'package:app_taxis/src/data/services/base_service.dart';
 import 'package:app_taxis/src/data/services/carrers_service.dart';
+import 'package:app_taxis/src/data/services/auth_service.dart'; // Added import for AuthService
 import 'package:app_taxis/src/data/services/local_storage_service.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
 import 'package:app_taxis/src/screens/splash/components/consent_dialog.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:http/http.dart' as http;
 
 class SplashController extends GetxController {
   final LocalStorage localStorage;
-  SplashController({required this.localStorage});
+  final AuthenticationService authService;
+  SplashController({required this.localStorage, required this.authService});
 
   @override
   void onReady() async {
     super.onReady();
+    await _checkVersion();
     await checkAndRequestPermissions();
     await fechData();
   }
@@ -113,27 +113,26 @@ class SplashController extends GetxController {
     }
   }
 
-  Future<void> checkAppVersion() async {
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  Future<void> _checkVersion() async {
+    final latestVersion = await authService.checkAppVersion();
 
-    final String currentVersion = packageInfo.version; // e.g., "1.0.3"
-    final String buildNumber = packageInfo.buildNumber; // e.g., "5"
-
-    print('Versión actual: $currentVersion (build $buildNumber)');
-
-    // Aquí puedes hacer tu petición al endpoint para comparar:
-    final response =
-        await http.get(Uri.parse('https://tuservidor.com/api/version'));
-
-    if (response.statusCode == 200) {
-      final latestVersion = jsonDecode(response.body)['latestVersion'];
-
-      if (currentVersion != latestVersion) {
-        // Mostrar alerta, redirigir a tienda, etc.
-        print('¡Hay una nueva versión disponible!');
-      }
-    } else {
-      print('Error al verificar la versión');
+    if (latestVersion != null) {
+      await Get.dialog(
+        AlertDialog(
+          title: const Text('Actualización disponible'),
+          content: Text(
+              'Por favor actualiza la app a la versión más reciente.\n\nNueva versión: $latestVersion'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                SystemNavigator.pop(); // O redirigir a la tienda
+              },
+              child: const Text('Actualizar'),
+            ),
+          ],
+        ),
+        barrierDismissible: false,
+      );
     }
   }
 }

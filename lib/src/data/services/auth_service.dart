@@ -1,6 +1,7 @@
 //Importacion de paquetes
 import 'dart:async';
 import 'package:dio/dio.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 //Importaciones de la app
 import 'package:app_taxis/src/data/models/request/login_request.dart';
 import 'package:app_taxis/src/data/models/response/login_response.dart';
@@ -43,5 +44,33 @@ class AuthenticationService {
       print('Error de inicio de sesión: $e');
       throw Exception("Error de inicio de sesión: $e");
     }
+  }
+
+  Future<String?> checkAppVersion() async {
+    try {
+      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      final String currentVersion = packageInfo.version;
+      final String buildNumber = packageInfo.buildNumber;
+
+      print('Versión actual: $currentVersion (build $buildNumber)');
+
+      final response = await _dio.get('https://tuservidor.com/api/version');
+
+      if (response.statusCode == 200) {
+        final latestVersion = response.data['latestVersion'];
+
+        if (currentVersion != latestVersion) {
+          print('¡Hay una nueva versión disponible!');
+          return latestVersion;
+        } else {
+          print('La app está actualizada.');
+        }
+      } else {
+        print('Error al verificar la versión: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Excepción al verificar la versión: $e');
+    }
+    return null;
   }
 }

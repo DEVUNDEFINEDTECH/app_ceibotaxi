@@ -136,67 +136,67 @@ class CarrerDetailPage extends StatelessWidget {
                     icon: Icon(Icons.keyboard_voice_outlined))
               ],
             ),
-            if (carrer.telefonocliente != null)
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      carrer.telefonocliente!,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () =>
-                        openWhatsApp(context, carrer.telefonocliente!),
-                    icon: Icon(
-                      Icons.message,
-                      color: ColorsApp.lightGreen,
-                      size: height * 0.03,
-                    ),
-                  ),
-                  SizedBox(width: width * 0.03),
-                  IconButton(
-                    onPressed: () => call(context, carrer.telefonocelular!),
-                    icon: Icon(
-                      Icons.phone_outlined,
-                      color: ColorsApp.lightGreen,
-                      size: height * 0.03,
-                    ),
-                  ),
-                ],
-              ),
-            if (carrer.telefonocelular != null &&
-                carrer.telefonocelular != carrer.telefonocliente)
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      carrer.telefonocelular!,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () =>
-                        openWhatsApp(context, carrer.telefonocelular!),
-                    icon: Icon(
-                      Icons.message,
-                      color: ColorsApp.lightGreen,
-                      size: height * 0.03,
-                    ),
-                  ),
-                  SizedBox(width: width * 0.03),
-                  IconButton(
-                    onPressed: () => call(context, carrer.telefonocelular!),
-                    icon: Icon(
-                      Icons.phone_outlined,
-                      color: ColorsApp.lightGreen,
-                      size: height * 0.03,
-                    ),
-                  ),
-                ],
-              ),
+            // if (carrer.telefonocliente != null)
+            //   Row(
+            //     children: [
+            //       Expanded(
+            //         child: Text(
+            //           carrer.telefonocliente!,
+            //           overflow: TextOverflow.ellipsis,
+            //           maxLines: 1,
+            //         ),
+            //       ),
+            //       IconButton(
+            //         onPressed: () =>
+            //             openWhatsApp(context, carrer.telefonocliente!),
+            //         icon: Icon(
+            //           Icons.message,
+            //           color: ColorsApp.lightGreen,
+            //           size: height * 0.03,
+            //         ),
+            //       ),
+            //       SizedBox(width: width * 0.03),
+            //       IconButton(
+            //         onPressed: () => call(context, carrer.telefonocelular!),
+            //         icon: Icon(
+            //           Icons.phone_outlined,
+            //           color: ColorsApp.lightGreen,
+            //           size: height * 0.03,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // if (carrer.telefonocelular != null &&
+            //     carrer.telefonocelular != carrer.telefonocliente)
+            //   Row(
+            //     children: [
+            //       Expanded(
+            //         child: Text(
+            //           carrer.telefonocelular!,
+            //           overflow: TextOverflow.ellipsis,
+            //           maxLines: 1,
+            //         ),
+            //       ),
+            //       IconButton(
+            //         onPressed: () =>
+            //             openWhatsApp(context, carrer.telefonocelular!),
+            //         icon: Icon(
+            //           Icons.message,
+            //           color: ColorsApp.lightGreen,
+            //           size: height * 0.03,
+            //         ),
+            //       ),
+            //       SizedBox(width: width * 0.03),
+            //       IconButton(
+            //         onPressed: () => call(context, carrer.telefonocelular!),
+            //         icon: Icon(
+            //           Icons.phone_outlined,
+            //           color: ColorsApp.lightGreen,
+            //           size: height * 0.03,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
             Row(
               children: [
                 Icon(

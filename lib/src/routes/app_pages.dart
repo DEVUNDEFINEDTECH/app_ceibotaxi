@@ -4,6 +4,8 @@ import 'package:app_taxis/src/screens/auth/user/user_screen.dart';
 import 'package:app_taxis/src/screens/dashboard/dashboard_screen.dart';
 import 'package:app_taxis/src/screens/dashboard/driver/dashboard_driver_binding.dart';
 import 'package:app_taxis/src/screens/dashboard/driver/dashboard_driver_screen.dart';
+import 'package:app_taxis/src/screens/payment/payment_binding.dart';
+import 'package:app_taxis/src/screens/payment/payment_screen.dart';
 import 'package:app_taxis/src/screens/perfil/components/analitycs_detail.dart';
 import 'package:app_taxis/src/screens/perfil/components/bases_detail.dart';
 import 'package:app_taxis/src/screens/splash/splash_binding.dart';
@@ -66,6 +68,11 @@ class AppPages {
     GetPage(
       name: _Paths.USER,
       page: () => UserScreen(),
+    ),
+    GetPage(
+      name: _Paths.PAYMENT,
+      page: () => PaymentsScreen(),
+      binding: PaymentBinding(),
     ),
     // GetPage(
     //   name: _Paths.CARRERDETAIL,

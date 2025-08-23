@@ -24,7 +24,7 @@ class SplashController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    await _checkVersion();
+    //await _checkVersion();
     await checkAndRequestPermissions();
     await fechData();
   }
@@ -131,12 +131,20 @@ class SplashController extends GetxController {
               onPressed: () async {
                 final url = Uri.parse(latestVersion);
 
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                if (latestVersion != null &&
+                    latestVersion.startsWith('https')) {
+                  final uri = Uri.parse(latestVersion);
+
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri, mode: LaunchMode.externalApplication);
+                  } else {
+                    print('No se pudo lanzar el enlace: $uri');
+                    Get.snackbar(
+                        'Error', 'No se pudo abrir el enlace de descarga');
+                  }
                 } else {
-                  // En caso de que falle
-                  Get.snackbar(
-                      'Error', 'No se pudo abrir el enlace de descarga');
+                  print('latestVersion inválido: $latestVersion');
+                  Get.snackbar('Error', 'Enlace de descarga inválido');
                 }
               },
               child: const Text('Actualizar'),

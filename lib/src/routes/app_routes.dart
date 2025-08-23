@@ -18,6 +18,7 @@ abstract class Routes {
   static const CARRERDETAIL = _Paths.CARRERDETAIL;
   static const ANALITYCDETAIL = _Paths.ANALITYCDETAIL;
   static const USER = _Paths.USER;
+  static const PAYMENT = _Paths.PAYMENT;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const OPTIONS = '/options';
   static const ANALITYCDETAIL = '/analitycDetail';
   static const USER = '/user';
+  static const PAYMENT = '/payment';
 }

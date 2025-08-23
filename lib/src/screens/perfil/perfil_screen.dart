@@ -328,6 +328,16 @@ class PerfilScreen extends GetView<PerfilController> {
                       : Colors.black, // Color del icono
                 );
               }),
+              TotalCard(
+                icon: Icons.wallet_outlined,
+                title: "Mis Pagos (Frecuencias)",
+                backgroundColor: Colors.white,
+                width: width,
+                height: height * 0.07,
+                onClick: () {
+                  Get.toNamed(Routes.PAYMENT);
+                },
+              ),
               SizedBox(
                 width: width,
                 child: TextButton(

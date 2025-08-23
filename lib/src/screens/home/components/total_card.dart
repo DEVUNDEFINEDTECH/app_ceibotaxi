@@ -13,7 +13,7 @@ class TotalCard extends StatelessWidget {
       required this.backgroundColor,
       required this.width,
       required this.height});
-  Function? onClick;
+  final Function? onClick;
   final String title;
   final String totalValue;
   final double width;
@@ -74,7 +74,7 @@ class TotalCard extends StatelessWidget {
             onPressed: onClick != null ? () => onClick!() : null,
             icon: Icon(
               Icons.navigate_next_outlined,
-              color: ColorsApp.lightGreen,
+              //color: ColorsApp.lightGreen,
               size: Get.width < 370 ? 25 : 30,
             ),
           )

@@ -1,85 +1,148 @@
+import 'package:app_taxis/src/config/theme.dart';
 import 'package:flutter/material.dart';
 
-class cardCarrerResumen extends StatelessWidget {
-  const cardCarrerResumen({
-    super.key,
-    required this.status,
-    required this.width,
-    required this.height,
-    required this.cliente,
-    required this.cod_cliente,
-  });
-
-  final double width;
-  final double height;
-  final bool status;
-  final String cliente;
-  final String cod_cliente;
+class DetalleCarreraCard extends StatelessWidget {
+  //const DetalleCarreraCard({super.key});
+  const DetalleCarreraCard(
+      {super.key,
+      this.codigo,
+      this.nombre,
+      this.direccion_partida,
+      this.direccion_llegada,
+      this.estado_carrera,
+      this.ubicacion_exacta,
+      this.fecha});
+  final String? codigo;
+  final String? nombre;
+  final String? direccion_partida;
+  final String? direccion_llegada;
+  final String? estado_carrera;
+  final String? ubicacion_exacta;
+  final String? fecha;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 25),
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          //set border radius more than 50% of height and width to make circle
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          decoration: const BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            //border: Border.all(color: Colors.grey, width: 1.0),
-          ),
-          width: width,
-          height: height,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Container(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // const Text(
+          //   'Detalle carrera',
+          //   style: TextStyle(
+          //     fontSize: 20,
+          //     fontWeight: FontWeight.bold,
+          //     color: Colors.black87,
+          //   ),
+          // ),
+          Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    cod_cliente,
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+              Expanded(child: SizedBox()),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: estado_carrera == "D"
+                      ? Colors.green[100]
+                      : Colors.red[100],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  estado_carrera == "D"
+                      ? "FINALIZADA"
+                      : estado_carrera == "C"
+                          ? "CANCELADA"
+                          : "NO FINALIZADAS",
+                  style: TextStyle(
+                    color: estado_carrera == "D" ? Colors.green : Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
                   ),
-                  Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: status ? Colors.green : Colors.red),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(20)),
-                          color: status
-                              ? Colors.green.withOpacity(0.1)
-                              : Colors.red.withOpacity(0.1)),
-                      height: height * 0.3,
-                      width: width * 0.12,
-                      child: status
-                          ? const Icon(
-                              Icons.check,
-                              color: Colors.green,
-                            )
-                          : const Icon(
-                              Icons.close,
-                              color: Colors.red,
-                            ))
-                ],
-              ),
-              Text(
-                cliente,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.grey),
-              ),
-              SizedBox(
-                height: height * 0.03,
+                ),
               ),
             ],
           ),
-        ),
+          Text(
+            'Cliente # ${codigo ?? '---'}',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              //color: Colors.grey,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            '${nombre ?? '---'}',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              Icon(
+                Icons.radio_button_checked_outlined,
+                color: ColorsApp.lightGreen,
+                size: 25,
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  direccion_partida ?? '-----',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 25),
+          Row(
+            children: [
+              Icon(
+                Icons.pin_drop_sharp,
+                color: ColorsApp.lightGreen,
+                size: 25,
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  direccion_llegada ?? '-----',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          const Text(
+            'Ubicación exacta',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.black87,
+            ),
+          ),
+          const Divider(),
+          Text(
+            ubicacion_exacta ??
+                'No se proporcionó una ubicación exacta para esta carrera.',
+            style: TextStyle(fontSize: 14, color: Colors.black54),
+            textAlign: TextAlign.justify,
+          ),
+          const SizedBox(height: 16),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              fecha ?? '--/--/----',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class CarrersController extends GetxController {
   //GlobalMemory gm = Get.find<GlobalMemory>();}
   GlobalMemory gm = Get.put<GlobalMemory>(GlobalMemory());
+  final tabIndex = 0.obs;
 
   @override
   void onReady() async {

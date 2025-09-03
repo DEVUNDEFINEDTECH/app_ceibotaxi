@@ -8,6 +8,7 @@ class PaymentController extends GetxController {
   var isLoading = false.obs;
   var payments = <Payment>[].obs;
   var errorMessage = "".obs;
+  var paymentsCheck = <PaymentItemModel>[].obs;
 
   @override
   void onInit() {
@@ -31,4 +32,20 @@ class PaymentController extends GetxController {
       isLoading.value = false;
     }
   }
+}
+
+class PaymentItemModel {
+  String title;
+  String date;
+  String amount1;
+  String amount2;
+  RxBool isChecked;
+
+  PaymentItemModel({
+    required this.title,
+    required this.date,
+    required this.amount1,
+    required this.amount2,
+    bool checked = false,
+  }) : isChecked = checked.obs;
 }

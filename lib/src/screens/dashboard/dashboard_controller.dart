@@ -5,7 +5,7 @@ import 'package:app_taxis/src/screens/carrers/carrers_controller.dart';
 import 'package:get/get.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
-class DashboardDriverController extends GetxController {
+class DashboardController extends GetxController {
   final NotificationService _notificationService = Get.find();
 
   @override

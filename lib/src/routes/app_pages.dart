@@ -2,10 +2,10 @@ import 'package:app_taxis/src/screens/auth/login/login_binding.dart';
 import 'package:app_taxis/src/screens/auth/login/login_screen.dart';
 import 'package:app_taxis/src/screens/auth/user/user_screen.dart';
 import 'package:app_taxis/src/screens/dashboard/dashboard_screen.dart';
-import 'package:app_taxis/src/screens/dashboard/driver/dashboard_driver_binding.dart';
-import 'package:app_taxis/src/screens/dashboard/driver/dashboard_driver_screen.dart';
+import 'package:app_taxis/src/screens/dashboard/dashboard_binding.dart';
+import 'package:app_taxis/src/screens/payment/components/register_payment_screen.dart';
+import 'package:app_taxis/src/screens/payment/driver_payment_screen.dart';
 import 'package:app_taxis/src/screens/payment/payment_binding.dart';
-import 'package:app_taxis/src/screens/payment/payment_screen.dart';
 import 'package:app_taxis/src/screens/perfil/components/analitycs_detail.dart';
 import 'package:app_taxis/src/screens/perfil/components/bases_detail.dart';
 import 'package:app_taxis/src/screens/splash/splash_binding.dart';
@@ -49,12 +49,7 @@ class AppPages {
     GetPage(
       name: _Paths.DASHBOARD,
       page: () => DashboardScreen(),
-      //binding: DashboardBinding(),
-    ),
-    GetPage(
-      name: _Paths.DASHBOARDDRIVER,
-      page: () => DashboardDriverScreen(),
-      binding: DashboardDriverBinding(),
+      binding: DashboardBinding(),
     ),
     // GetPage(
     //   name: _Paths.OPTIONS,
@@ -71,12 +66,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PAYMENT,
-      page: () => PaymentsScreen(),
+      page: () => DriverPaymentScreen(),
       binding: PaymentBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.CARRERDETAIL,
-    //   page: () => CarrerDetailPage(),
-    // ),
+    GetPage(
+      name: _Paths.REGISTERPAYMENT,
+      page: () => RegisterPaymentScreen(),
+    ),
   ];
 }

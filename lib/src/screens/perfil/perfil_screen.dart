@@ -1,7 +1,7 @@
 import 'package:app_taxis/src/data/services/socket_servicer.dart';
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
-import 'package:app_taxis/src/screens/dashboard/driver/dashboard_controller.dart';
+import 'package:app_taxis/src/screens/dashboard/dashboard_controller.dart';
 import 'package:app_taxis/src/screens/home/components/total_card.dart';
 import 'package:app_taxis/src/screens/perfil/perfil_controller.dart';
 import 'package:app_taxis/src/config/theme.dart';
@@ -11,8 +11,8 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class PerfilScreen extends GetView<PerfilController> {
-  final DashboardDriverController dashboardController =
-      Get.put(DashboardDriverController());
+  final DashboardController dashboardController =
+      Get.put(DashboardController());
   List<String> listGenderText = ["10-8", "10-7"];
   RxBool tabTextIconIndexSelected = true.obs;
   SocketsService socketService = SocketsService();
@@ -140,7 +140,7 @@ class PerfilScreen extends GetView<PerfilController> {
                   ),
                   child: Container(
                     padding: const EdgeInsets.all(10),
-                    height: height * 0.14,
+                    //height: height * 0.14,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -150,7 +150,7 @@ class PerfilScreen extends GetView<PerfilController> {
                               "assets/images/avatar_driver.png"),
                         ),
                         const SizedBox(width: 10),
-                        Expanded(
+                        Flexible(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,7 +222,7 @@ class PerfilScreen extends GetView<PerfilController> {
                   ),
                   child: Container(
                     padding: const EdgeInsets.all(10),
-                    height: height * 0.15,
+                    //height: height * 0.15,
                     child: Column(
                       children: [
                         const Row(
@@ -261,7 +261,7 @@ class PerfilScreen extends GetView<PerfilController> {
                               ),
                             ),
                             const SizedBox(width: 10),
-                            Expanded(
+                            Flexible(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

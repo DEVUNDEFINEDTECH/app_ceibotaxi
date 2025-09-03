@@ -1,7 +1,7 @@
 import 'package:app_taxis/src/global_memory.dart';
 import 'package:app_taxis/src/routes/app_pages.dart';
 import 'package:app_taxis/src/screens/carrers/carrers_controller.dart';
-import 'package:app_taxis/src/screens/dashboard/driver/dashboard_controller.dart';
+import 'package:app_taxis/src/screens/dashboard/dashboard_controller.dart';
 import 'package:app_taxis/src/screens/home/components/card_carrera.dart';
 import 'package:app_taxis/src/screens/home/components/carrer_detail.dart';
 import 'package:app_taxis/src/screens/home/home_controller.dart';
@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 class HomeScreen extends GetView<HomeController> {
   final CarrersController carrers_controller = Get.find<CarrersController>();
   final GlobalMemory gm = Get.find<GlobalMemory>();
-  final DashboardDriverController dc = Get.find<DashboardDriverController>();
+  final DashboardController dc = Get.find<DashboardController>();
 
   HomeScreen({super.key});
 

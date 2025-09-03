@@ -299,6 +299,7 @@ class CarrersScreen extends GetView<CarrersController> {
           ),
           child: SingleChildScrollView(
             child: DetalleCarreraCard(
+              estado_carrera: carrera.estadocarrera,
               codigo: carrera.codigocliente != null
                   ? carrera.codigocliente.toString()
                   : null,

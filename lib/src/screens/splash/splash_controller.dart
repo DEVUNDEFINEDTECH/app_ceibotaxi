@@ -24,7 +24,7 @@ class SplashController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    //await _checkVersion();
+    await _checkVersion();
     await checkAndRequestPermissions();
     await fechData();
   }
@@ -125,28 +125,34 @@ class SplashController extends GetxController {
               'Por favor actualiza la app a la versión más reciente.\n\nNueva versión: $latestVersion'),
           actions: [
             TextButton(
-              // onPressed: () {
-              //   SystemNavigator.pop(); // O redirigir a la tienda
-              // },
               onPressed: () async {
-                final url = Uri.parse(latestVersion);
+                final uri = Uri.parse(latestVersion);
 
-                if (latestVersion != null &&
-                    latestVersion.startsWith('https')) {
-                  final uri = Uri.parse(latestVersion);
-
-                  if (await canLaunchUrl(uri)) {
-                    await launchUrl(uri, mode: LaunchMode.externalApplication);
-                  } else {
-                    print('No se pudo lanzar el enlace: $uri');
-                    Get.snackbar(
-                        'Error', 'No se pudo abrir el enlace de descarga');
-                  }
-                } else {
-                  print('latestVersion inválido: $latestVersion');
-                  Get.snackbar('Error', 'Enlace de descarga inválido');
+                try {
+                  await launchUrl(uri, mode: LaunchMode.externalApplication);
+                } catch (e) {
+                  print('Error al abrir enlace: $e');
+                  Get.snackbar(
+                      'Error', 'No se pudo abrir el enlace de descarga');
                 }
               },
+              // onPressed: () async {
+              //   if (latestVersion != null &&
+              //       latestVersion.startsWith('https')) {
+              //     final uri = Uri.parse(latestVersion);
+
+              //     if (await canLaunchUrl(uri)) {
+              //       await launchUrl(uri, mode: LaunchMode.externalApplication);
+              //     } else {
+              //       print('No se pudo lanzar el enlace: $uri');
+              //       Get.snackbar(
+              //           'Error', 'No se pudo abrir el enlace de descarga');
+              //     }
+              //   } else {
+              //     print('latestVersion inválido: $latestVersion');
+              //     Get.snackbar('Error', 'Enlace de descarga inválido');
+              //   }
+              // },
               child: const Text('Actualizar'),
             ),
           ],

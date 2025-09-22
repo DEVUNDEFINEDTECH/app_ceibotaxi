@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BasesDetailPage extends StatelessWidget {
-  GlobalMemory gm = Get.find<GlobalMemory>();
-  HomeController hc = Get.find<HomeController>();
+  final GlobalMemory gm = Get.find<GlobalMemory>();
+  final HomeController hc = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {

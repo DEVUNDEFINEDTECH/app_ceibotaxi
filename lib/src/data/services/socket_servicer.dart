@@ -65,8 +65,8 @@ class SocketsService extends GetxController {
     // Configuración dinámica
     final settings = LocationSettings(
         accuracy: tracking ? LocationAccuracy.best : LocationAccuracy.medium,
-        //distanceFilter: tracking ? 2 : 10, // Más sensible si tracking == true
-        distanceFilter: 0);
+        distanceFilter: tracking ? 1 : 10); // Más sensible si tracking == true
+    //distanceFilter: 0);
 
     _positionStream = Geolocator.getPositionStream(locationSettings: settings)
         .listen((position) {

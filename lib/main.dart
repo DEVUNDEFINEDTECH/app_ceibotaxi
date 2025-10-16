@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'RTSG',
+      title: 'Ceibo Taxis',
       defaultTransition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
       // theme: ThemeData(

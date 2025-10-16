@@ -14,8 +14,8 @@ class Unidad {
   String apellidopaterno;
   String apellidomaterno;
   String nombres;
-  DateTime fecharegistro;
-  DateTime? fechamodificacion;
+  // DateTime? fecharegistro;
+  // DateTime? fechamodificacion;
 
   Unidad({
     required this.id,
@@ -31,8 +31,8 @@ class Unidad {
     required this.apellidopaterno,
     required this.apellidomaterno,
     required this.nombres,
-    required this.fecharegistro,
-    this.fechamodificacion,
+    // required this.fecharegistro,
+    // this.fechamodificacion,
   });
 
   factory Unidad.fromRawJson(String str) => Unidad.fromJson(json.decode(str));
@@ -53,9 +53,10 @@ class Unidad {
         apellidopaterno: json["apellidopaterno"],
         apellidomaterno: json["apellidomaterno"],
         nombres: json["nombres"],
-        fecharegistro: DateTime.parse(json["fecharegistro"]),
-        fechamodificacion: json["fechamodificacion"] =
-            null ?? DateTime.parse(json["fechamodificacion"]),
+        // fecharegistro: json["fecharegistro"] =
+        //     null ?? DateTime.parse(json["fecharegistro"]),
+        // fechamodificacion: json["fechamodificacion"] =
+        //     null ?? DateTime.parse(json["fechamodificacion"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -72,7 +73,7 @@ class Unidad {
         "apellidopaterno": apellidopaterno,
         "apellidomaterno": apellidomaterno,
         "nombres": nombres,
-        "fecharegistro": fecharegistro.toIso8601String(),
-        "fechamodificacion": fechamodificacion!.toIso8601String(),
+        // "fecharegistro": fecharegistro!.toIso8601String(),
+        // "fechamodificacion": fechamodificacion!.toIso8601String(),
       };
 }

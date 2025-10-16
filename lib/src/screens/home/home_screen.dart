@@ -34,7 +34,7 @@ class HomeScreen extends GetView<HomeController> {
           children: [
             //_perfilData(height: height, width: width, gm: gm),
             const Text(
-              "RTSG",
+              "Ceibo Taxis",
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,

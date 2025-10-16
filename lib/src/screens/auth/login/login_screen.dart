@@ -20,13 +20,13 @@ class LoginScreen extends GetView<AuthController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image(
-                  image: const AssetImage('assets/images/logo_rtsg.png'),
+                  image: const AssetImage('assets/images/logo.png'),
                   height: height * 0.15,
                   width: width * 0.4,
                 ),
                 Center(
                     child: Text(
-                  'RadioTaxi "San Gregorio"',
+                  'Ceibo Taxi',
                   style: TextStyle(fontSize: 25),
                 )),
 

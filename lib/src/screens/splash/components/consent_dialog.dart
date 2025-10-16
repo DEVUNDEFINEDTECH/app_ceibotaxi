@@ -8,7 +8,7 @@ Future<bool> showConsentDialog() async {
           return AlertDialog(
             title: const Text('Consentimiento para acceder a la ubicación'),
             content: const Text(
-              "RTSG recopila datos de ubicación para habilitar rastreo de rutas y viajes, "
+              "Ceibo Taxi recopila datos de ubicación para habilitar rastreo de rutas y viajes, "
               "incluso cuando la app está cerrada o no se está utilizando. Estos datos también se usan para establecer tiempos de y distancias estimadas para los viajes.",
             ),
             actions: <Widget>[

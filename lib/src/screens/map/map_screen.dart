@@ -39,7 +39,7 @@ class _MapScreenState extends State<MapScreen> {
   Future<void> _loadCustomMarker() async {
     final iconStart = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(35, 35)), // Tamaño de la imagen
-      'assets/images/logo_rtsg.png', // Ruta a tu imagen
+      'assets/images/logo.png', // Ruta a tu imagen
     );
     final iconEnd = await BitmapDescriptor.asset(
       const ImageConfiguration(size: Size(35, 35)), // Tamaño de la imagen

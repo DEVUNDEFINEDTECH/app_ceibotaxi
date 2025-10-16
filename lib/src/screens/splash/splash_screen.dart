@@ -24,12 +24,20 @@ class SplashScreen extends GetView<SplashController> {
             Image.asset(
               height: height * 0.2,
               width: width * 0.6,
-              'assets/images/logo_rtsg.png',
+              'assets/images/logo.png',
             ),
-            Image.asset(
-              width: width * 0.6,
-              'assets/images/slogan.png',
+            Text(
+              "CeiboTaxi",
+              style: TextStyle(
+                color: ColorsApp.lightGreen,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
             ),
+            // Image.asset(
+            //   width: width * 0.6,
+            //   'assets/images/slogan.png',
+            // ),
             const SizedBox(
               height: 50,
             ),
